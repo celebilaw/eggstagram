@@ -1,6 +1,6 @@
-# ScrambledEggs
+# e :egg: :egg: stagram
 
-## Team Members:
+## Authors:
 * Noah Gardner - noahgardner303@gmail.com
 * Celebi Law - celebilaw@gmail.com
 * Matthew Workman - wathmew@gmail.com 
