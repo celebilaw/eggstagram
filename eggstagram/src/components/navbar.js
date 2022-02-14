@@ -15,7 +15,7 @@ export default class Navbar extends React.Component {
           <Link to="/post">Make a Post!</Link>
           </li>
           <li className="nav-links">
-          <Link to="/account">Create an Account</Link>
+          <Link to="/register">Create an Account</Link>
           </li>
         </ul>
         </div>

@@ -17,7 +17,7 @@ function App() {
             <Route path="/feed" element={<PostList />} />
             <Route path="/edit/:id" element={<EditPost />} />
             <Route path="/post" element={<CreatePost />} />
-            <Route path="/account" element={<CreateAccount />} />
+            <Route path="/register" element={<CreateAccount />} />
         </Routes>
       </div>
     </Router>

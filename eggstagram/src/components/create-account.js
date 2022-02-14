@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 
 export default class CreateAccount extends React.Component {
     constructor(props) {
@@ -6,11 +7,13 @@ export default class CreateAccount extends React.Component {
 
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
             username: "",
             password: "",
+            email: "",
         }
     }
 
@@ -26,19 +29,30 @@ export default class CreateAccount extends React.Component {
         });
     }
 
+    onChangeEmail(emal) {
+        this.setState({
+            email: emal.target.value
+        });
+    }
+
     onSubmit(submit) {
         submit.preventDefault();
 
         const user = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            email: this.state.email,
         }
 
         console.log(user);
 
+        axios.post('http://localhost:5000/register', user)
+            .then(res => console.log(res.data));
+        
         this.setState({
             username: "",
-            password: ""
+            password: "",
+            email: ""
         });
     }
 
@@ -63,6 +77,15 @@ export default class CreateAccount extends React.Component {
                     required
                     value={this.state.password}
                     onChange={this.onChangePassword}
+                    />
+              </div>
+              <div> 
+                <label>Email:</label>
+                <input  
+                    type="text"
+                    required
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
                     />
               </div>
               <div>
