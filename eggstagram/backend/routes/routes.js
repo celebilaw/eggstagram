@@ -31,8 +31,12 @@ router.route('/feed').get((req, res) => {
 router.route('/post').post((req, res) => {
   const username = req.body.username;
   const text = req.body.text;
+  const image = req.body.image;
+  const tag = req.body.tag;
+  const rating = req.body.tag;
   const date = Date.parse(req.body.date);
-  const newPost = new Post({username, text, date});
+  const likes = 0;
+  const newPost = new Post({username, text, image, tag, rating, likes, date});
   newPost.save()
     .then(() => res.json('Post added!'))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -51,12 +55,26 @@ router.route('/posts/:id').delete((req, res) => {
     .then(() => res.json('Post deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
 });
-  
-// update specific post
-router.route('/posts/:id').post((req, res) => {
-  Post.findById(req.params.id)
+
+// like post
+// problem: how do you get username of person liking post?
+router.route('/posts/like/:id').post((req,res) => {
+  Post.findByIdAndUpdate(req.params.id, {$set: req.body})
+//     //do you need to restate everything or can you just update likes (checkout findByIdAndUpdate)
     .then(post => {
-      post.username = req.body.username;
+      post.likes = post.likes + 1;
+      post.likedBy.push(req.body.name);
+      post.save()
+       .then(() => res.json('Post liked by ' + req.body.name))
+       .catch(err => res.status(400).json('Error ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+  
+// update specific post - currently should just be for text edits
+router.route('/posts/:id').post((req, res) => {
+  Post.findByIdAndUpdate(req.params.id, {$set: req.body})
+    .then(post => {
       post.text = req.body.text;
       post.date = Date.parse(req.body.date);
       post.save()
