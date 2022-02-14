@@ -1,10 +1,27 @@
-import React from "react"
-import Navbar from "./Navbar"
+import React from "react";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-export default function App() {
-    return (
-        <div>
-            <Navbar />
-        </div>
-    )
+import Navbar from "./components/navbar"
+import PostList from "./components/post-list";
+import EditPost from "./components/edit-post";
+import CreatePost from "./components/create-post";
+import CreateAccount from "./components/create-account";
+
+function App() {
+  return (
+    <Router>
+      <div className="container">
+        <Navbar />
+        <br/>
+        <Routes>
+            <Route path="/feed" element={<PostList />} />
+            <Route path="/edit/:id" element={<EditPost />} />
+            <Route path="/post" element={<CreatePost />} />
+            <Route path="/account" element={<CreateAccount />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 }
+
+export default App;
