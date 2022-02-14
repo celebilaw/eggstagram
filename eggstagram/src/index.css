@@ -1,6 +1,15 @@
 nav {
-    height: 100px;
-    width: 100px;
     display: flex;
-    padding: 15px 15px;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: powderblue;
+    color: white;
+}
+
+.nav-links {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
 }
