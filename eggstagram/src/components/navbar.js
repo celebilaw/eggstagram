@@ -8,13 +8,13 @@ export default class Navbar extends React.Component {
         <Link to="/">Eggstagram</Link>
         <div>
         <ul>
-          <li>
+          <li className="nav-links">
           <Link to="/feed">Posts</Link>
           </li>
-          <li>
+          <li className="nav-links">
           <Link to="/post">Make a Post!</Link>
           </li>
-          <li>
+          <li className="nav-links">
           <Link to="/account">Create an Account</Link>
           </li>
         </ul>
