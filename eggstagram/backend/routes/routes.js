@@ -1,4 +1,8 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const login = require('../middleware/login');
+require("dotenv").config();
 let User = require('../models/user.model');
 let Post = require('../models/post.model');
 
@@ -11,13 +15,38 @@ router.route('/users').get((req, res) => {
 
 // save new user to database
 router.route('/register').post((req, res) => {
-  const username = req.body.username;
-  const email = req.body.email;
-  const password = req.body.password;
-  const newUser = new User({username, email, password});
-  newUser.save()
-    .then(() => res.json('User added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+  var {username, email, password} = req.body;
+  bcrypt.hash(password,12)
+    .then((hashedpw)=>{
+      const newUser = new User({
+        username,
+        email,
+        password: hashedpw,
+      })
+      newUser.save()
+        .then(() => res.json('User added!'))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+});
+
+// login to user account
+router.route('/login').post((req, res) => {
+  var {email, password} = req.body;
+  User.findOne({email: email})
+    .then((savedUser)=>{
+      bcrypt.compare(password,savedUser.password)
+        .then(match=>{
+          if (match) {
+            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET)
+            res.json({token:token})
+          }
+        })
+    })
+});
+
+// protected area
+router.get('/protected',login,(req,res)=>{
+  res.send("hello");
 });
 
 // return all posts found in the database
