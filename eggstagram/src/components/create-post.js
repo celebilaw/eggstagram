@@ -52,6 +52,8 @@ export default class CreatePost extends React.Component {
 
         console.log(exercise);
 
+        
+
         window.location = "/feed";
     }
 
