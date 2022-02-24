@@ -10,10 +10,18 @@ export default class CreatePost extends React.Component {
         this.onChangeDescription = this.onChangeDescription.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        //basically need additional fields (i assume in render function here) for: 
+        //image (can be none as default for now)
+        //tag (ie one for each dining place like epicuria, de neve, etc) (i was thinking drop down menu? but idk)
+        //rating (1-5 stars or something or just a text field, has to be a number tho)
 
         this.state = {
             username: "",
-            description: "",
+            description: "", //i call it text in post.model.js, is this gonna be an issue
+            //i don't want to mess her up so i will leave changes as a comment <3
+            //image: "",
+            //tag: "",
+            //rating: 0,
             date: new Date(),
         }
     }
