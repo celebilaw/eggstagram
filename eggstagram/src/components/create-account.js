@@ -58,39 +58,51 @@ export default class CreateAccount extends React.Component {
 
     render() {
         return (
-            <div>
-            <h3>Create Account</h3>
-            <form onSubmit={this.onSubmit}>
-              <div> 
-                <label>Username:</label>
-                <input  
-                    type="text"
-                    required
-                    value={this.state.username}
-                    onChange={this.onChangeUsername}
-                    />
-              </div>
-              <div> 
-                <label>Password:</label>
-                <input  
-                    type="text"
-                    required
-                    value={this.state.password}
-                    onChange={this.onChangePassword}
-                    />
-              </div>
-              <div> 
-                <label>Email:</label>
-                <input  
-                    type="text"
-                    required
-                    value={this.state.email}
-                    onChange={this.onChangeEmail}
-                    />
-              </div>
-              <div>
-                <input type="submit" value="Create Account"/>
-              </div>
+            <div class="text-center">
+            <form className="signIn" onSubmit={this.onSubmit}>
+                <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
+                    alt="eggstagram logo" height="100"
+                />
+                <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
+                <div> 
+                    <label for="emailAddress" class="visually-hidden">Email Address:</label>
+                    <input  
+                        type="email"
+                        id="emailAddress"
+                        class="form-control"
+                        placeholder="Email Address"
+                        required
+                        value={this.state.email}
+                        onChange={this.onChangeEmail}
+                        />
+                </div>
+                <div> 
+                    <label for="username" class="visually-hidden">Username:</label>
+                    <input  
+                        type="username"
+                        id="username"
+                        placeholder="Username"
+                        class="form-control"
+                        required
+                        value={this.state.username}
+                        onChange={this.onChangeUsername}
+                        />
+                </div>
+                <div> 
+                    <label for="password" class="visually-hidden">Password:</label>
+                    <input  
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        class="form-control"
+                        required
+                        value={this.state.password}
+                        onChange={this.onChangePassword}
+                        />
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="btn btn-lg signUpButton btn-block">Sign Up</button>
+                </div>
             </form>
           </div>
         )

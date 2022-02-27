@@ -1,7 +1,20 @@
 .navbar-custom {
-    background-color:#8BB8E8;
+    background-color: #2774AE;
 }
 
 .navbar-text {
     color: white;
+}
+
+.signIn {
+    max-width: 300px;
+    margin: auto;
+}
+
+.webBackgroundColor {
+    background-color: #FFD100;
+}
+
+.signUpButton {
+    background-color: #8BB8E8;
 }
