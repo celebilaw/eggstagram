@@ -10,7 +10,7 @@ import CreateAccount from "./components/create-account";
 function App() {
   return (
     <Router>
-      <div className="container">
+      <div>
         <Navbar />
         <br/>
         <Routes>

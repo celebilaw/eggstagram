@@ -1,15 +1,7 @@
-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 10vh;
-    background: powderblue;
-    color: white;
+.navbar-custom {
+    background-color:#8BB8E8;
 }
 
-.nav-links {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
+.navbar-text {
+    color: white;
 }
