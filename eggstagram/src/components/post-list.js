@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 const Post = props => (
@@ -8,7 +8,7 @@ const Post = props => (
         <td>{props.post.description}</td>
         <td>{props.post.date.substring(0,10)}</td>
         <td>
-            {/*<Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a> {/*add button}*/}
+            {<Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a>} {/*todo*/}
         </td>
     </tr>
 )
@@ -48,6 +48,9 @@ export default class PostsList extends React.Component {
         return (
             <div>
                 <p>You are on the Feed Component!</p>
+                    <tbody>
+                        { this.postList() }
+                    </tbody>
             </div>
         )
     }
