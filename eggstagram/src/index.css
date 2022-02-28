@@ -18,3 +18,57 @@
 .signUpButton {
     background-color: #8BB8E8;
 }
+
+@media(min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }
+}
+
+.newsletterFontSize {
+    font-size: 1.4em;
+}
+
+/*row of 5 columns for the 5 pictures*/
+.col-xs-15,
+.col-sm-15,
+.col-md-15,
+.col-lg-15 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.col-xs-15 {
+    width: 20%;
+    float: left;
+}
+@media (min-width: 768px) {
+.col-sm-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 992px) {
+    .col-md-15 {
+        width: 20%;
+        float: left;
+    }
+}
+@media (min-width: 1200px) {
+    .col-lg-15 {
+        width: 20%;
+        float: left;
+    }
+}
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
+.whiteSection{
+    background-color: white;
+}
+
+.whiteSectionText{
+    color: black;
+}
