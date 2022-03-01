@@ -6,12 +6,12 @@ import '../index.css';
 export default class Navbar extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-custom">
+      <nav className="navbar navbar-expand-sm navbar-custom fixed-top">
         <div className="container-fluid">
           <Link className="navbar-brand navbar-text" to="/"> {/*Eggstagram*/} 
             Eggstagram&ensp;
             <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
-                  alt="eggstagram logo" height="20"
+                  alt="eggstagram logo" height="23"
             />
           </Link>
 

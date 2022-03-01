@@ -72,3 +72,18 @@
 .whiteSectionText{
     color: black;
 }
+
+/*ghost element, so that body can be pushed down when making navbar fixed*/
+body::before {
+    display: block;
+    content: '';
+    height: 60px;
+}
+
+.newsletter-custom {
+    background-color: #2774AE;
+}
+
+.newsletter-text {
+    color: white;
+}
