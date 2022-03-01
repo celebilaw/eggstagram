@@ -64,7 +64,7 @@ export default class CreateAccount extends React.Component {
                     alt="eggstagram logo" height="100"
                 />
                 <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
-                <div> 
+                <div class="mb-3"> 
                     <label for="emailAddress" class="visually-hidden">Email Address:</label>
                     <input  
                         type="email"
@@ -76,7 +76,7 @@ export default class CreateAccount extends React.Component {
                         onChange={this.onChangeEmail}
                         />
                 </div>
-                <div> 
+                <div class="mb-3"> 
                     <label for="username" class="visually-hidden">Username:</label>
                     <input  
                         type="username"

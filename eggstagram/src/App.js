@@ -13,7 +13,6 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <br/>
         <Routes>
           <Route path="/" element={<MainComponents />} />
           <Route path="/feed" element={<PostList />} />

@@ -1,6 +1,5 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../index.css';
+import '../css/maincomponent.css';
 import { Accordion } from "react-bootstrap";
 
 export default class MainComponents extends React.Component {
@@ -35,14 +34,19 @@ export default class MainComponents extends React.Component {
   render() {
     return (
         <div>
-            {/*random space, for now, to add more stuff*/}
-            <br/>
-            <br/>
-            <br/>
-            <p class="text-center">What else should we add here?</p>
-            <br/>
-            <br/>
-            <br/>
+            <div id="carouselPics" class="carousel slide" data-bs-interval="5000" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="http://bruinplate.hhs.ucla.edu/img/Home_Slide_MOC.jpg" class="d-block w-100" alt="missing image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://s3.amazonaws.com/cms.ipressroom.com/173/files/20147/53f62fbf6eafb53bef001e2c_Saladbar/Saladbar_97b0c727-95e0-497d-baec-365438d93fbe-prv.jpg" class="d-block w-100" alt="missing image" />
+                    </div>
+                    <div class="carousel-item">
+                        <img src="http://bruinplate.hhs.ucla.edu/img/Home_Slide2_new.jpg" class="d-block w-100" alt="missing image" />
+                    </div>
+                </div>
+            </div>
             
             <section id="faq" class="p-4 whiteSection">
                 <div class="container">
