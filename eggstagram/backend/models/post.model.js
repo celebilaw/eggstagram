@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const commentSchema = new Schema ({
+    username: { type: String, required: true },
+    text: { type: String, required: true },
+    likes: { type: Number, default: 0 },
+    likedBy: [String],
+    date: { type: Date, required: true },
+}, {
+    timestamps: true,
+});
+
 const postSchema = new Schema({
     username: { type: String, required: true }, // pfp from username?, display next to it
     text: { type: String, required: true },
@@ -9,17 +19,12 @@ const postSchema = new Schema({
     rating: {type: Number, require: true},
     likes: {type: Number, default: 0},
     likedBy: [String],
-    //add comments: [commentSchema] plus new commentSchema? 
-    //kinda like the setup above and then in the comment schema have username, text 
-    //so each post has its own set of comments
-    //otherwise could have property isComment inside post. maybe better bc no need for multiple things, but harder to map to posts
-    // image, required
-    // restaurant tag, required
-    // rating, required
+    comments: [commentSchema],
     date: { type: Date, required: true }, // change formatting prob
 }, {
     timestamps: true,
 });
 
 const Post = mongoose.model('Post', postSchema);
+const Comment = mongoose.model('Comment', commentSchema);
 module.exports = Post;

@@ -5,6 +5,7 @@ const login = require('../middleware/login');
 require("dotenv").config();
 let User = require('../models/user.model');
 let Post = require('../models/post.model');
+let Comment = require('../models/post.model'); // is this part of the access issue? 
 
 // return all users found in the database
 router.route('/users').get((req, res) => {
@@ -49,9 +50,9 @@ router.get('/protected',login,(req,res)=>{
   res.send("hello");
 });
 
-// return all posts found in the database
+// return all posts found in the database, most recent first
 router.route('/feed').get((req, res) => {
-  Post.find()
+  Post.find().sort( {createdAt: "desc"} )
     .then(posts => res.json(posts))
     .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -113,5 +114,65 @@ router.route('/posts/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ' + err));
 });
+
+ //filter through posts by tag, most recent post first
+router.route('/feed/:tag').get((req, res) => {
+  Post.find( {tag: req.params.tag} ).sort( {createdAt: "desc"})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: ' + err));
+}); 
+
+//sort posts by number of likes (most -> least)
+//change route tho? idk what to call it
+router.route('/feed-hot').get((req, res) => {
+  Post.find().sort({likes: "desc"})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//add a comment
+router.route('/posts/comment/:id').post((req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      const username = req.body.username;
+      const text = req.body.text;
+      const likes= 0;
+      const date = Date.parse(req.body.date);
+      post.comments.push(new Comment({username, text, likes, date}));
+      post.save()
+        .then(() => res.json('Post commented on by: ' + req.body.username))
+        .catch(err => res.status(400).json('Error: ' + err));
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
+//returns all comments for a specific post
+router.route('/posts/comments/:id').get((req, res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      res.json(post.comments)
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+}); 
+
+//like comment: currently not functional <3
+//prob isn't necessary, jsut an optional additional feature
+//if we get rid of comment likes then i'll change the commentSchema to make it simpler
+//also sorry for the disgusting link
+/* router.route('/posts/:id/comment/like/:comID').post((req,res) => {
+  Post.findById(req.params.id)
+    .then(post => {
+      post.forEach(post.comments) 
+        .then(comment => {
+          comment.likes = comment.likes + 1;
+          comment.likedBy.push(req.body.name);
+          comment.save()
+          .then(() => res.json('Comment liked by ' + req.body.name))
+          .catch(err => res.status(400).json('Error ' + err));
+        })
+    })
+    .catch(err => res.status(400).json('Error: ' + err));
+});  */
+
 
 module.exports = router;
