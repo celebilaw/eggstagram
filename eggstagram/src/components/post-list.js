@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import SearchBar from "./SearchBar";
+import PostData from 'axios' //?????????
+//how can we import data in order to search for key words/food/posts? 
 
 const Post = props => (
     <tr>
@@ -47,6 +50,8 @@ export default class PostsList extends React.Component {
     render() {
         return (
             <div>
+                <SearchBar placeholder="Enter post description" data={PostData}/>
+                <br />
                 <p>You are on the Feed Component!</p>
                     <tbody>
                         { this.postList() }
