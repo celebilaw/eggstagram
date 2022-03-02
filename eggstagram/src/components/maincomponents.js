@@ -34,18 +34,70 @@ export default class MainComponents extends React.Component {
   render() {
     return (
         <div>
-            <div id="carouselPics" class="carousel slide" data-bs-interval="5000" data-bs-ride="carousel">
+            <div id="carouselPics" class="carousel slide carousel-fade" data-bs-interval="3500" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselPics" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselPics" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselPics" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="http://bruinplate.hhs.ucla.edu/img/Home_Slide_MOC.jpg" class="d-block w-100" alt="missing image" />
+                        <div class="row g-0">
+                            <div class="col-3">
+                                <img src={require('./images/epic.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pancakes.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/noodles.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/sandwich.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                        </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://s3.amazonaws.com/cms.ipressroom.com/173/files/20147/53f62fbf6eafb53bef001e2c_Saladbar/Saladbar_97b0c727-95e0-497d-baec-365438d93fbe-prv.jpg" class="d-block w-100" alt="missing image" />
+                    <div class="row g-0">
+                            <div class="col-3">
+                                <img src={require('./images/pic1.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic2.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic3.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic4.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                        </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="http://bruinplate.hhs.ucla.edu/img/Home_Slide2_new.jpg" class="d-block w-100" alt="missing image" />
+                    <div class="row g-0">
+                            <div class="col-3">
+                                <img src={require('./images/pic5.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic6.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic7.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/bread.png')} class="d-block w-100" alt="missing image" />
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselPics" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselPics" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
             
             <section id="faq" class="p-4 whiteSection">
