@@ -1,6 +1,7 @@
 import React from "react";
 import '../css/maincomponent.css';
 import { Accordion } from "react-bootstrap";
+import '../css/footer.css'
 
 export default class MainComponents extends React.Component {
 
@@ -134,7 +135,7 @@ export default class MainComponents extends React.Component {
             <section class="newsletter-custom newsletter-text p-3">
                 <form class="container">
                     <div class="d-md-flex justify-content-between align-items-center">
-                        <h3 class="mb-1.5 mb-md-0 newsletterFontSize">Sign Up For Our Newsletter</h3>
+                        <h3 class="mb-1.5 mb-md-0 newsletterFontSize">Sign up for our newsletter</h3>
                         <div class="input-group news-input" onSubmit={this.onSubmit}>
                             <input
                                 type="email"
@@ -254,9 +255,50 @@ export default class MainComponents extends React.Component {
                     <br/>
                 </div>
             </section>
-            <section class="whiteSection p-5">
-                <h3 class="whiteSectionText text-center">Copyright/Info Stuff</h3>
-            </section>
+
+            <footer class="site-footer text-center">
+                <div class="container">
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-5">
+                            <h2>Our GitHub Repo</h2>
+                            <p>Project source code is available here</p>
+                            <p><a href="https://github.com/celebilaw/eggstagram" target="_blank" rel="noreferrer noopener">Click to learn more</a></p>
+                        </div>
+
+                        <div class="col-md-4 mb-5">
+                            <h2>Contact &amp; Email Address????</h2>
+                            <ul class="list-unstyled footer-link">
+                                <li>
+                                    <span class="me-3">Adress</span><span class="text-white">Random stuff</span>
+                                </li>
+                                <li>
+                                    <span class="me-3">Phone</span><span class="text-white">Random stuff</span>
+                                </li>
+                                <li>
+                                    <span class="me-3">Email</span><span class="text-white">Random stuff</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-4 mb-5">
+                            <h2>Quick Links</h2>
+                            <ul class="list-unstyled footer-link">
+                                <li><a href="http://menu.dining.ucla.edu/Menus" target="_blank" rel="noreferrer noopener">UCLA Menu</a></li>
+                                <li><a href="http://menu.dining.ucla.edu/Hours" target="_blank" rel="noreferrer noopener">UCLA Hours</a></li>
+                                <li><a href="https://portal.housing.ucla.edu/dining-services/overview" target="_blank" rel="noreferrer noopener">About</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <p> <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
+                                    alt="eggstagram logo" height="23"/> © 2022 Eggstagram, LLC (How tf do I center this div).
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
   }

@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -28,7 +29,15 @@ export default class CreatePost extends React.Component {
 
     // called right before anything is rendered on the webpage
     componentDidMount() {
-        // do nothing for now
+        axios.get('http://localhost:5000/users/')
+        .then(response => {
+            if (response.data.length > 0) {
+                this.setState({
+                    users: response.data.map(user => user.username),
+                    username: response.data[0].username
+                })
+            }
+        })
     }
 
     onChangeUsername(user) {
@@ -52,15 +61,13 @@ export default class CreatePost extends React.Component {
     onSubmit(submit) {
         submit.preventDefault();
 
-        const exercise = {
+        const post = {
             username: this.state.username,
             description: this.state.description,
             date: this.state.date
         }
 
-        console.log(exercise);
-
-        
+        console.log(post);
 
         window.location = "/feed";
     }
@@ -70,7 +77,7 @@ export default class CreatePost extends React.Component {
             <div>
                 <h3>Create Post</h3>
                 <form onSubmit={this.onSubmit}>
-                    <div>
+                    <div className="form-group">
                         <label>Username:</label>
                         <input
                             type="text"
