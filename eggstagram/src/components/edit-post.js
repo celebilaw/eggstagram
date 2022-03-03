@@ -1,6 +1,7 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios'
 
 export default class EditPost extends React.Component {
     constructor(props) {
@@ -28,7 +29,23 @@ export default class EditPost extends React.Component {
 
     // called right before anything is rendered on the webpage
     componentDidMount() {
-        // do nothing for now
+        axios.get('http://localhost:5000/feed/'+this.props.match.params.id)
+        .then(response => {
+            this.setState({
+                username: response.data.username,
+                description: response.data.description,
+                date: new Date(response.data.date)
+            })
+        })
+
+        axios.get('http://localhost:5000/users/')
+        .then(response => {
+            if (response.data.length > 0) {
+                this.setState({
+                    users: response.data.map(user => user.username),
+                })
+            }
+        })
     }
 
     onChangeUsername(user) {
@@ -52,13 +69,16 @@ export default class EditPost extends React.Component {
     onSubmit(submit) {
         submit.preventDefault();
 
-        const exercise = {
+        const post = {
             username: this.state.username,
             description: this.state.description,
             date: this.state.date
         }
 
-        console.log(exercise);
+        console.log(post);
+
+        axios.post('http://localhost5000/feed/update'+this.props.match.params.id, post)
+        .then(res => console.log(res.data));
 
         window.location = "/feed";
     }

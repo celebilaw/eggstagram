@@ -1,0 +1,33 @@
+.site-footer{
+    padding: 3em 0;
+    background: rgb(33, 33, 39);
+    font-size: 14px;
+    color: white;
+}
+
+.site-footer p:last-child {
+    margin-bottom: 0;
+}
+
+.site-footer a {
+    color: gold;
+}
+
+.site-footer h2 {
+    font-size: 22px;
+    margin-bottom: 28px;
+    letter-spacing: .05em;
+    color: #5096cc;
+}
+
+.site-footer .footer-link li {
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.containerPic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

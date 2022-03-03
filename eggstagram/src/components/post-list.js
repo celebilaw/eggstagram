@@ -12,7 +12,7 @@ const Post = props => (
         <td>{props.post.description}</td>
         <td>{props.post.date.substring(0,10)}</td>
         <td>
-            {<Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a>} {/*todo*/}
+            {<Link to={"/edit/"+props.post._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a>} {/*todo*/}
         </td>
     </tr>
 )
