@@ -12,25 +12,30 @@ export default class MainComponents extends React.Component {
 
         this.state = {
             email: "",
+            submitted: false,
         }
     }
 
     onSubmit(submit) {
+        window.alert('Thanks')
         submit.preventDefault();
-
         const userNewsletter = {
             email: this.state.email,
         }
-
         console.log(userNewsletter);
 
         //axios.post('http://localhost:5000/post', post)
           //  .then(res => console.log(res.data));
         
         this.setState({
-            email: ""
+            email: "",
+            submitted: true,
         });
     }
+
+    onButtonClickHandler = () => {
+        window.alert('Thank you!')
+    };
 
   render() {
     return (
@@ -100,6 +105,8 @@ export default class MainComponents extends React.Component {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
+            <br/>
             
             <section id="faq" class="p-4 whiteSection">
                 <div class="container">
@@ -108,29 +115,30 @@ export default class MainComponents extends React.Component {
                     </h2>
                     <Accordion flush>
                         <Accordion.Item eventKey="0">
-                            <Accordion.Header>Item #1</Accordion.Header>
+                            <Accordion.Header>Motivation</Accordion.Header>
                             <Accordion.Body>
-                                Hello
+                            We wanted to create a method for UCLA students to review the food options on campus.
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="1">
-                            <Accordion.Header>Item #2</Accordion.Header>
+                            <Accordion.Header>Functionality</Accordion.Header>
                             <Accordion.Body>
-                                There!
+                            Users will be able to create accounts to post text reviews with images and ratings 
+                            about any type of UCLA food, and be able to look through others’ posts, sorting by 
+                            dining halls, best reviews, cuisines, etc.
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
-                            <Accordion.Header>Item #3</Accordion.Header>
+                            <Accordion.Header>Purpose</Accordion.Header>
                             <Accordion.Body>
-                                - General Kenobi
+                                This website strives to provide key information about UCLA dining food so that fellow
+                                Bruins can avoid going back to their dorms with an
+                                empty stomach after wasting a meal swipe on terrible food.
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
                 </div>
             </section>
-
-            <br/>
-            <p class="text-center">Other stuff?</p>
 
             <section class="newsletter-custom newsletter-text p-3">
                 <form class="container">
@@ -143,7 +151,7 @@ export default class MainComponents extends React.Component {
                                 placeholder="Enter Email"
                                 required
                             />
-                            <button
+                            <button onSubmit={this.onButtonClickHandler}
                                 class="btn btn-dark btn-lg"
                                 type="submit"
                             >
@@ -155,7 +163,6 @@ export default class MainComponents extends React.Component {
             </section>
 
             <br/>
-            <p class="text-center">Other stuff?</p>
 
             <section id="developers" class="p-5 newsletter-custom">
                 <div class="container">
@@ -265,17 +272,14 @@ export default class MainComponents extends React.Component {
                             <p><a href="https://github.com/celebilaw/eggstagram" target="_blank" rel="noreferrer noopener">Click to learn more</a></p>
                         </div>
 
-                        <div class="col-md-4 mb-5">
-                            <h2>Contact &amp; Email Address????</h2>
+                        <div class="col-md-4 mb-5 text-center">
+                            <h2>Contact Us</h2>
                             <ul class="list-unstyled footer-link">
                                 <li>
-                                    <span class="me-3">Adress</span><span class="text-white">Random stuff</span>
+                                    <span>Proud to support fellow Bruins</span>
                                 </li>
                                 <li>
-                                    <span class="me-3">Phone</span><span class="text-white">Random stuff</span>
-                                </li>
-                                <li>
-                                    <span class="me-3">Email</span><span class="text-white">Random stuff</span>
+                                    <span class="me-3">Email:</span><span class="text-white">support@eggstagram.com</span>
                                 </li>
                             </ul>
                         </div>
@@ -292,7 +296,7 @@ export default class MainComponents extends React.Component {
                         <div class="row">
                             <div class="col-12 text-center">
                                 <p> <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
-                                    alt="eggstagram logo" height="23"/> © 2022 Eggstagram, LLC (How tf do I center this div).
+                                    alt="eggstagram logo" height="23"/> © 2022 Eggstagram, LLC.
                                 </p>
                             </div>
                         </div>

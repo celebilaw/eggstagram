@@ -3,6 +3,7 @@ import '../css/SearchBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+import axios from 'axios'
 
 function SearchBar({ placeholder, data }) {
 
@@ -38,7 +39,9 @@ function SearchBar({ placeholder, data }) {
             </div>
             {filteredData.length != 0 && (
             <div className="dataResult">
-
+                {data.map((value, key) => {
+                    return <div> {value.description}</div>;
+                })}
             </div>
             )}
         </div>
