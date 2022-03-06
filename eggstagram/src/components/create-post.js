@@ -94,23 +94,23 @@ export default class CreatePost extends React.Component {
     render() {
         return (
             <div class="container-fluid p-2">
-                <form onSubmit={this.onSubmit}>
+                <form class="text-box" onSubmit={this.onSubmit}>
                     <h1 class="h3 mb-3 font-weight-normal">Create a Review Post!</h1>
-                    <div className="mb-3">
-                        <label for="tag" class="visually-hidden">Dining Hall</label>
-                        <input
-                            type="tag"
-                            id="diningHall"
-                            class="form-control"
-                            placeholder="Pick a dining hall from the dropdown menu"
-                            required
-                            value={this.state.tag}
-                            onChange={this.onChangeTag}
-                        />
-                    </div>
+                    <select class="mb-3 form-select" aria-label="select-menu">
+                        <option selected disabled>Choose a Dining Hall</option>
+                        {/* value is sent to server */}
+                        <option value="Epicuria">Epicuria</option>
+                        <option value="De Neve">De Neve</option>
+                        <option value="Feast">Feast</option>
+                        <option value="Bruin Plate">Bruin Plate</option>
+                        <option value="Bruin Cafe">Bruin Cafe</option>
+                        <option value="Rendezvous">Rendezvous</option>
+                        <option value="The Study at Hedrick">The Study at Hedrick</option>
+                        <option value="The Drey">The Drey</option>
+                    </select>
                     <div className="mb-3">
                         <label for="text" class="visually-hidden">Description</label>
-                        <input
+                        <textarea
                             type="text"
                             id="description"
                             class="form-control"
@@ -118,13 +118,15 @@ export default class CreatePost extends React.Component {
                             required
                             value={this.state.text}
                             onChange={this.onChangeText}
-                        />
+                            rows="3"
+                        >
+                        </textarea>
                     </div>
                     <div className="mb-3">
-                        <label for="img" class="visually-hidden">Optional Image</label>
+                        <label for="formFile" class="visually-hidden">Image</label>
                         <input
-                            type="img"
-                            id="image"
+                            type="file"
+                            id="formFile"
                             class="form-control"
                             placeholder="Attach an Image (optional)"
                             value={this.state.image}
@@ -144,7 +146,14 @@ export default class CreatePost extends React.Component {
                         />
                     </div>
                     <div className="mb-3 form-control">
-                        {this.state.date}
+                        <label for="date" class="visually-hidden">Date</label>
+                        <input
+                            type="text"
+                            readonly
+                            disabled
+                            class="form-control-plaintext"
+                            value={this.state.date}
+                        />
                     </div>
                     <div class="mt-3">
                     <button type="submit" class="btn btn-lg post-button btn-block">Submit Review</button>
