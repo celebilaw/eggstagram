@@ -1,5 +1,5 @@
 import React from "react";
-//import axios from 'axios';
+import axios from 'axios';
 
 export default class CreateAccount extends React.Component {
     constructor(props) {
@@ -46,8 +46,10 @@ export default class CreateAccount extends React.Component {
 
         console.log(user);
 
-        //axios.post('http://localhost:5000/post', post)
-          //  .then(res => console.log(res.data));
+        axios.post('http://localhost:5000/register', user)
+            .then(res => console.log(res.data));
+            //.then(console.log("axios time"))
+            //.then(res => console.log(res.data));
         
         this.setState({
             username: "",
