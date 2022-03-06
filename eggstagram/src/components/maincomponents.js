@@ -106,7 +106,10 @@ export default class MainComponents extends React.Component {
                 </button>
             </div>
 
-            <br/>
+            <section class="p-2">
+                <h1 class="intro text-white text-center">Welcome to Eggstagram!</h1>
+                <p class=" text-white text-center">A project inspired by Eggs, Instagram, and EGGERT</p>
+            </section>
             
             <section id="faq" class="p-4 whiteSection">
                 <div class="container">
@@ -162,7 +165,10 @@ export default class MainComponents extends React.Component {
                 </form>
             </section>
 
-            <br/>
+            <section class="p-3 text-white text-center">
+                <h5> #1 BEST COLLEGE FOOD IN AMERICA!? </h5>
+                <h6> Let us know what you think! </h6>
+            </section>
 
             <section id="developers" class="p-5 newsletter-custom">
                 <div class="container">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import '../css/postlist.css'
+import '../css/postlist.css';
 import axios from 'axios';
 import SearchBar from "./SearchBar";
 //how can we import data in order to search for key words/food/posts? 
