@@ -106,9 +106,9 @@ export default class MainComponents extends React.Component {
                 </button>
             </div>
 
-            <section class="p-2">
-                <h1 class="intro text-white text-center">Welcome to Eggstagram!</h1>
-                <p class=" text-white text-center">A project inspired by Eggs, Instagram, and EGGERT</p>
+            <section class="p-2 text-white text-center">
+                <h1>Welcome to Eggstagram!</h1>
+                <p>A project inspired by Eggs, Instagram, and EGGERT</p>
             </section>
             
             <section id="faq" class="p-4 whiteSection">
