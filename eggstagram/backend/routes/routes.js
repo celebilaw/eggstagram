@@ -130,6 +130,20 @@ router.route('/feed-hot').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+//sort posts by user (return all posts posted by a user)
+router.route('/feed/user/:name').get((req, res) => {
+  Post.find( {username: req.params.name} ).sort( {createdAt: "desc"})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: ' + err));
+}); 
+
+//search for a post with a keyword
+router.route('/feed/search/:key').get((req, res) => {
+  Post.find( {text: {$regex : req.params.key, $options: 'i'}} ).sort( {createdAt: "desc"})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: ' + err));
+}); 
+
 //add a comment
 router.route('/posts/comment/:id').post((req, res) => {
   Post.findById(req.params.id)
