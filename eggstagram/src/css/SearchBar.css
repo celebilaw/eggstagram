@@ -1,5 +1,5 @@
 .searchInputs {
-    margin-top: 7px;
+    margin-top: 20px;
     margin-left: 5px;
     display: flex;
 }
@@ -13,15 +13,50 @@
     padding-left: 8px;
     font-size: 15px;
     height: 30px;
-    width: 300px;
+    width: 450px;
 }
 
-.searchIcon {
+.searchIcon svg {
     height: 30px;
     width: 30px;
     background-color: white;
     display: grid;
     place-items: center;
+}
+
+input:focus {
+    outline: none;
+}
+
+.dataResult {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 450px;
+    height: 300px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.dataResult .dataItem {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+.dataItem p {
+    margin-left: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+  
+  a:hover {
+    background-color: lightgrey;
 }
 
 #clearBtn {
