@@ -1,14 +1,15 @@
 import axios from "axios";
 import React from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import "../css/create-post.css"
 
 export default class CreatePost extends React.Component {
     constructor(props) {
         super(props);
 
-        this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
+        this.onChangeText = this.onChangeText.bind(this);
+        this.onChangeImage = this.onChangeImage.bind(this);
+        this.onChangeTag = this.onChangeTag.bind(this);
+        this.onChangeRating = this.onChangeRating.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         //basically need additional fields (i assume in render function here) for: 
@@ -16,14 +17,16 @@ export default class CreatePost extends React.Component {
         //tag (ie one for each dining place like epicuria, de neve, etc) (i was thinking drop down menu? but idk)
         //rating (1-5 stars or something or just a text field, has to be a number tho)
 
+        var date_string = Date();
+
         this.state = {
-            username: "",
-            description: "", //i call it text in post.model.js, is this gonna be an issue
-            //i don't want to mess her up so i will leave changes as a comment <3
-            //image: "",
-            //tag: "",
-            //rating: 0,
-            date: new Date(),
+            username: "", // get username from database
+            text: "",
+            image: "",
+            tag: "",
+            rating: 0,
+            date: date_string,
+            likes: 0, // default is 0 bc no likes yet
         }
     }
 
@@ -40,15 +43,27 @@ export default class CreatePost extends React.Component {
         })
     }
 
-    onChangeUsername(user) {
+    onChangeText(desc) {
         this.setState({
-            username: user.target.value
+            text: desc.target.value
         });
     }
 
-    onChangeDescription(desc) {
+    onChangeImage(img) {
         this.setState({
-            description: desc.target.value
+            image: img.target.value
+        });
+    }
+
+    onChangeTag(tag) {
+        this.setState({
+            tag: tag.target.value
+        });
+    }
+
+    onChangeRating(rating) {
+        this.setState({
+            rating: rating.target.value
         });
     }
 
@@ -62,9 +77,13 @@ export default class CreatePost extends React.Component {
         submit.preventDefault();
 
         const post = {
-            username: this.state.username,
-            description: this.state.description,
-            date: this.state.date
+            username: this.state.username, // get from database
+            text: this.state.text,
+            image: this.state.image,
+            tag: this.state.tag,
+            rating: this.state.rating,
+            likes: this.state.likes,
+            date: this.state.date,
         }
 
         console.log(post);
@@ -74,35 +93,70 @@ export default class CreatePost extends React.Component {
 
     render() {
         return (
-            <div>
-                <h3>Create Post</h3>
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label>Username:</label>
+            <div class="container-fluid p-2">
+                <form class="text-box" onSubmit={this.onSubmit}>
+                    <h1 class="h3 mb-3 font-weight-normal">Create a Review Post!</h1>
+                    <select class="mb-3 form-select" aria-label="select-menu">
+                        <option selected disabled>Choose a Dining Hall</option>
+                        {/* value is sent to server */}
+                        <option value="Epicuria">Epicuria</option>
+                        <option value="De Neve">De Neve</option>
+                        <option value="Feast">Feast</option>
+                        <option value="Bruin Plate">Bruin Plate</option>
+                        <option value="Bruin Cafe">Bruin Cafe</option>
+                        <option value="Rendezvous">Rendezvous</option>
+                        <option value="The Study at Hedrick">The Study at Hedrick</option>
+                        <option value="The Drey">The Drey</option>
+                    </select>
+                    <div className="mb-3">
+                        <label for="text" class="visually-hidden">Description</label>
+                        <textarea
+                            type="text"
+                            id="description"
+                            class="form-control"
+                            placeholder="Enter Description Here"
+                            required
+                            value={this.state.text}
+                            onChange={this.onChangeText}
+                            rows="3"
+                        >
+                        </textarea>
+                    </div>
+                    <div className="mb-3">
+                        <label for="formFile" class="visually-hidden">Image</label>
+                        <input
+                            type="file"
+                            id="formFile"
+                            class="form-control"
+                            placeholder="Attach an Image (optional)"
+                            value={this.state.image}
+                            onChange={this.onChangeImage}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label for="rating" class="visually-hidden">Rating</label>
+                        <input
+                            type="rating"
+                            id="rating"
+                            class="form-control"
+                            placeholder="Rate the food!"
+                            required
+                            value={this.state.rating}
+                            onChange={this.onChangeRating}
+                        />
+                    </div>
+                    <div className="mb-3 form-control">
+                        <label for="date" class="visually-hidden">Date</label>
                         <input
                             type="text"
-                            required
-                            value={this.state.username}
-                            onChange={this.onChangeUsername}
+                            readonly
+                            disabled
+                            class="form-control-plaintext"
+                            value={this.state.date}
                         />
                     </div>
-                    <div> 
-                    <label>Description: </label>
-                        <input  type="text"
-                            required
-                            value={this.state.description}
-                            onChange={this.onChangeDescription}
-                        />
-                    </div>
-                    <div>
-                        <label>Date:</label>
-                        <DatePicker
-                            selected={this.state.date}
-                            onChange={this.onChangeDate}
-                        />
-                    </div>
-                    <div>
-                        <input type="submit" value="Create Post"/>
+                    <div class="mt-3">
+                    <button type="submit" class="btn btn-lg post-button btn-block">Submit Review</button>
                     </div>
                 </form>
             </div>

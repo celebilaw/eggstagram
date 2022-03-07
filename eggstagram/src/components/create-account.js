@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import "../css/create-account.css"
 
 export default class CreateAccount extends React.Component {
     constructor(props) {
@@ -12,8 +13,8 @@ export default class CreateAccount extends React.Component {
 
         this.state = {
             username: "",
-            password: "",
             email: "",
+            password: "",
         }
     }
 
@@ -40,21 +41,19 @@ export default class CreateAccount extends React.Component {
 
         const user = {
             username: this.state.username,
-            password: this.state.password,
             email: this.state.email,
+            password: this.state.password,
         }
 
         console.log(user);
 
         axios.post('http://localhost:5000/register', user)
-            .then(res => console.log(res.data));
-            //.then(console.log("axios time"))
-            //.then(res => console.log(res.data));
+           .then(res => console.log(res.data));
         
         this.setState({
             username: "",
+            email: "",
             password: "",
-            email: ""
         });
     }
 
@@ -76,7 +75,7 @@ export default class CreateAccount extends React.Component {
                         required
                         value={this.state.email}
                         onChange={this.onChangeEmail}
-                        />
+                    />
                 </div>
                 <div class="mb-3"> 
                     <label for="username" class="visually-hidden">Username:</label>
@@ -88,7 +87,7 @@ export default class CreateAccount extends React.Component {
                         required
                         value={this.state.username}
                         onChange={this.onChangeUsername}
-                        />
+                    />
                 </div>
                 <div> 
                     <label for="password" class="visually-hidden">Password:</label>
@@ -100,7 +99,7 @@ export default class CreateAccount extends React.Component {
                         required
                         value={this.state.password}
                         onChange={this.onChangePassword}
-                        />
+                    />
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-lg signUpButton btn-block">Sign Up</button>

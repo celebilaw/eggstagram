@@ -3,6 +3,7 @@ import '../css/SearchBar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
+//import axios from 'axios'
 
 function SearchBar({ placeholder, data }) {
 
@@ -13,7 +14,7 @@ function SearchBar({ placeholder, data }) {
         const searchWord = event.target.value;
         setWordEntered(searchWord);
         const newFilter = data.filter((value) => {
-            return value.title.toLowerCase().includes(searchWord.toLowerCase);
+            return value.description.toLowerCase().includes(searchWord.toLowerCase());
         });
         if (searchWord === "") {
             setFilteredData([]);
@@ -33,12 +34,18 @@ function SearchBar({ placeholder, data }) {
             <div className="searchInputs">
                 <input type="text" placeholder={placeholder} value={wordEntered} onChange={handleFilter}/>
                 <div className="searchIcon">
-                    {filteredData.length === 0 ? <SearchIcon /> : <CloseIcon id="clearBtn" onClick={clearInput}/> }
+                    {filteredData.length === 0 ? ( <SearchIcon /> ) : ( <CloseIcon id="clearBtn" onClick={clearInput}/> )}
                 </div>
             </div>
-            {filteredData.length != 0 && (
+            {filteredData.length !== 0 && (
             <div className="dataResult">
-
+                {filteredData.map((value, key) => {
+                    return (
+                        <a className="dataItem" href="#">
+                            <p>{value.description} </p>
+                        </a>
+                    );
+                })}
             </div>
             )}
         </div>
