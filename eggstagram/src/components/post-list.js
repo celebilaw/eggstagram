@@ -23,6 +23,8 @@ export default class PostsList extends React.Component {
         super(props);
         this.deletePost = this.deletePost.bind(this);
         this.state = {posts: []};
+
+        document.body.style.backgroundColor = "#FFD100";
     }
 
     componentDidMount() {

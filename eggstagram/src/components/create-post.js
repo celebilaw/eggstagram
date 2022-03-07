@@ -1,6 +1,7 @@
 import axios from "axios";
-import React from "react";
-import "../css/create-post.css"
+import React, {useState} from "react";
+import "../css/create-post.css";
+import Rating from '@material-ui/lab/Rating';
 
 export default class CreatePost extends React.Component {
     constructor(props) {
@@ -17,17 +18,17 @@ export default class CreatePost extends React.Component {
         //tag (ie one for each dining place like epicuria, de neve, etc) (i was thinking drop down menu? but idk)
         //rating (1-5 stars or something or just a text field, has to be a number tho)
 
-        var date_string = Date();
-
         this.state = {
             username: "", // get username from database
             text: "",
             image: "",
             tag: "",
             rating: 0,
-            date: date_string,
+            date: "",
             likes: 0, // default is 0 bc no likes yet
         }
+
+        document.body.style.backgroundColor = "#8BB8E8";
     }
 
     // called right before anything is rendered on the webpage
@@ -61,9 +62,9 @@ export default class CreatePost extends React.Component {
         });
     }
 
-    onChangeRating(rating) {
+    onChangeRating(newValue) {
         this.setState({
-            rating: rating.target.value
+            rating: newValue
         });
     }
 
@@ -83,7 +84,7 @@ export default class CreatePost extends React.Component {
             tag: this.state.tag,
             rating: this.state.rating,
             likes: this.state.likes,
-            date: this.state.date,
+            date: new Date(),
         }
 
         console.log(post);
@@ -95,10 +96,10 @@ export default class CreatePost extends React.Component {
 
     render() {
         return (
-            <div class="container-fluid p-2">
-                <form class="text-box" onSubmit={this.onSubmit}>
-                    <h1 class="h3 mb-3 font-weight-normal">Create a Review Post!</h1>
-                    <select class="mb-3 form-select" aria-label="select-menu">
+            <div class="container-fluid p-2 text-center">
+                <form class="text-box post-list mt-3" onSubmit={this.onSubmit}>
+                    <h1 class="h3 mb-4 font-weight-normal text-white">Create a Review Post!</h1>
+                    <select class="mb-4 form-select" aria-label="select-menu">
                         <option selected disabled>Choose a Dining Hall</option>
                         {/* value is sent to server */}
                         <option value="Epicuria">Epicuria</option>
@@ -110,7 +111,7 @@ export default class CreatePost extends React.Component {
                         <option value="The Study at Hedrick">The Study at Hedrick</option>
                         <option value="The Drey">The Drey</option>
                     </select>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <label for="text" class="visually-hidden">Description</label>
                         <textarea
                             type="text"
@@ -124,7 +125,7 @@ export default class CreatePost extends React.Component {
                         >
                         </textarea>
                     </div>
-                    <div className="mb-3">
+                    <div className="mb-4">
                         <label for="formFile" class="visually-hidden">Image</label>
                         <input
                             type="file"
@@ -135,29 +136,22 @@ export default class CreatePost extends React.Component {
                             onChange={this.onChangeImage}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label for="rating" class="visually-hidden">Rating</label>
-                        <input
-                            type="rating"
-                            id="rating"
-                            class="form-control"
-                            placeholder="Rate the food!"
-                            required
+                    <div className="mb-4">
+                        <label for="rating" class="form-label rating-font text-white">Rate the food!</label>
+                        <br/>
+                        <Rating
+                            name="Rating Label"
                             value={this.state.rating}
-                            onChange={this.onChangeRating}
+                            size="large"
+                            onChange={(event, newValue) => {
+                                this.onChangeRating(newValue);
+                            }}
+                            sx={{
+                                color: "rating-color"
+                            }}
                         />
                     </div>
-                    <div className="mb-3 form-control">
-                        <label for="date" class="visually-hidden">Date</label>
-                        <input
-                            type="text"
-                            readonly
-                            disabled
-                            class="form-control-plaintext"
-                            value={this.state.date}
-                        />
-                    </div>
-                    <div class="mt-3">
+                    <div class="mt-4">
                     <button type="submit" class="btn btn-lg post-button btn-block">Submit Review</button>
                     </div>
                 </form>

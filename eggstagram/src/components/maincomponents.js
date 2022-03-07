@@ -14,6 +14,8 @@ export default class MainComponents extends React.Component {
             email: "",
             submitted: false,
         }
+
+        document.body.style.backgroundColor = "#FFD100";
     }
 
     onSubmit(submit) {

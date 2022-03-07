@@ -1,7 +1,15 @@
 .post-button {
-    background-color: #8BB8E8;
+    background-color: #FFD100;
 }
 
 .text-box {
     max-width: 500px;
+}
+
+.rating-font {
+    font-size: 30px;
+}
+
+.post-list {
+    margin: auto;
 }
