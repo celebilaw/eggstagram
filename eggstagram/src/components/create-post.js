@@ -87,8 +87,10 @@ export default class CreatePost extends React.Component {
         }
 
         console.log(post);
+        axios.post('http://localhost:5000/post', post)
+           .then(res => console.log(res.data));
 
-        window.location = "/feed";
+        //window.location = "/feed";
     }
 
     render() {
