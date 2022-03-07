@@ -3,7 +3,34 @@
     max-width: 600px;
     object-fit: cover;
 }
-
+.card-heart{
+    height: 25px;
+    max-width: 25px;
+}
 .card-size {
     height: 350px;
+}
+
+.card-text {
+    color: white;
+}
+
+.card-text:focus {
+    color: white;
+}
+
+.card-text:hover {
+    color: #FFD100;
+}
+
+.card-wrap{
+    position: relative;
+}
+
+.card a{
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px
 }

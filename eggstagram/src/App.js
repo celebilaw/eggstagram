@@ -8,6 +8,7 @@ import CreatePost from "./components/create-post";
 import CreateAccount from "./components/create-account";
 import MainComponents from "./components/maincomponents";
 import Login from "./components/login"
+import ViewPost from "./components/view-post";
 
 function App() {
   return (
@@ -22,6 +23,11 @@ function App() {
           <Route path="/register" element={<CreateAccount />} />
           <Route path="/login" element={<Login />}/>
         </Routes>        
+      </div>
+      <div>
+        <Routes>
+          <Route path="/posts/:id" element={<ViewPost />} />
+        </Routes>
       </div>
     </Router>
   );
