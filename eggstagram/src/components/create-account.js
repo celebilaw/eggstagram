@@ -16,6 +16,8 @@ export default class CreateAccount extends React.Component {
             email: "",
             password: "",
         }
+
+        document.body.style.backgroundColor = "#FFD100";
     }
 
     onChangeUsername(user) {
