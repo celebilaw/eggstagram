@@ -25,6 +25,8 @@ export default class EditPost extends React.Component {
             //rating: 0,
             date: new Date(),
         }
+
+        document.body.style.backgroundColor = "#FFD100";
     }
 
     // called right before anything is rendered on the webpage
