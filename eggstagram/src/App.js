@@ -7,6 +7,7 @@ import EditPost from "./components/edit-post";
 import CreatePost from "./components/create-post";
 import CreateAccount from "./components/create-account";
 import MainComponents from "./components/maincomponents";
+import Login from "./components/login"
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/edit/:id" element={<EditPost />} />
           <Route path="/post" element={<CreatePost />} />            
           <Route path="/register" element={<CreateAccount />} />
+          <Route path="/login" element={<Login />}/>
         </Routes>        
       </div>
     </Router>

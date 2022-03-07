@@ -30,6 +30,9 @@ export default class Navbar extends React.Component {
               <li className="nav-item">
                 <Link className="nav-link navbar-text" to="/register">Create an Account</Link>
               </li>
+              <li className="nav-item">
+                <Link class="btn login-button text-white" to="/login">Login</Link>
+              </li>
             </ul>
           </div>
         </div>
