@@ -39,6 +39,9 @@ export default class Login extends React.Component {
         }
 
         console.log(user);
+
+        axios.post('http://localhost:5000/login', user)
+           .then(res => console.log(res.data));
         
         this.setState({
             email: "",
