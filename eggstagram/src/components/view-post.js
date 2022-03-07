@@ -20,8 +20,7 @@ export default class ViewPost extends React.Component {
         this.state = {post: []};
     }
     componentDidMount() {
-        let loc = this.props.location //should return /posts/id
-        loc = "/posts/62255020b9dfcb34f9346786"
+        let loc = window.location.pathname
         console.log(loc)
         axios.get('http://localhost:5000' + loc)
         .then(response => {
@@ -44,22 +43,22 @@ export default class ViewPost extends React.Component {
     cuteTag() {
         switch(this.state.post.tag) {
             case "De_Neve":
-                return <p>De Neve</p>
+                return <p>De Neve</p>;
                 break;
             case "Bruin_Plate":
-                return <p>Bruin Plate</p>
+                return <p>Bruin Plate</p>;
                 break;
             case "Bruin_Cafe":
-                return <p>Bruin Cafe</p>
+                return <p>Bruin Cafe</p>;
                 break;
             case "The_Study":
-                return <p>The Study at Hedrick</p>
+                return <p>The Study at Hedrick</p>;
                 break;
             case "The_Drey":
-                return <p>The Drey</p>
+                return <p>The Drey</p>;
                 break;
             default:
-                <p>{this.state.post.tag}</p>
+                return <p>{this.state.post.tag}</p>;
         }
     }
 
@@ -67,8 +66,8 @@ export default class ViewPost extends React.Component {
         return (
             <div>
                 {this.isImage()}
-                <h5> {this.state.post.username}</h5>
-                {this.cuteTag()}
+                <h5> {this.cuteTag()}</h5>
+                <p>{this.state.post.username}</p>
                 <p>{this.state.post.rating} stars</p>
                 <p> {this.state.post.text}</p>
                 <p>Liked by {this.state.post.likes} people</p>

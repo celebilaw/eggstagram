@@ -53,11 +53,26 @@ export default class PostsList extends React.Component {
         })
     }
     
-    getId() {
-        //eventually actually return the thing
-        return 1;
+    getTag(i) {
+        let postList = this.postList();
+        let tagList = [];
+        postList.forEach(d => tagList.push(d.props.post.tag));
+        return tagList[i];
     }
 
+    getId(i) {
+        let postList = this.postList();
+        let idList = [];
+        postList.forEach(d => idList.push(d.props.post._id));
+        return idList[i];
+    }
+
+    getText(i) {
+        let postList = this.postList();
+        let textList = [];
+        postList.forEach(d => textList.push(d.props.post.text));
+        return textList[i];
+    }
 
 
     render() {
@@ -67,50 +82,50 @@ export default class PostsList extends React.Component {
                 <br />
                 <p>You are on the Feed Component!</p>
                     <tbody>
-                        {console.log(this.postList()[0])}
+                        {console.log(this.getTag(1))}
                     </tbody>
                 <div class="row g-4 mb-4">
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(0)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://spoonuniversity.com/wp-content/uploads/sites/61/2015/11/flat-fread-1024x1024.png" alt="food image" class="card-img-top card-img"/>
                             {/*<img src="https://www.citypng.com/public/uploads/preview/-51611552141cxqbb1ntp1.png" alt="heart" class="card-heart card-heart-bottom"/>*/}
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">De Neve Pizza</h5>
-                                <p class="card-text post-text"> yoloadsfasdfsfsdfsdfasdfasdfsadfasdfasdfasdfsdafsdfsdafasdfasdfasdsdaasdfasdfsdafsdafasdfafasdfasdfasdfasdfsadfsdasdfasdfsadfsadfsadfasdfasdfsadfasdfasdfasdfasdfsadfdssdafasdfasfasdfasdfasfasdfsadfsadfsd </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(0)}</h5>
+                                <p class="card-text post-text"> {this.getText(0)} </p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(1)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://wp.dailybruin.com/images/2018/10/web.ns_.swipereward.RH_.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">BPlate burgers</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(1)}</h5>
+                                <p class="card-text post-text"> {this.getText(1)} </p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(2)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://pbs.twimg.com/media/Ee36c0VUEAU-_sZ.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">This food sucks!</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(2)}</h5>
+                                <p class="card-text post-text"> {this.getText(2)} </p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(3)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://pbs.twimg.com/media/Ee36c0VUEAU-_sZ.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">This food sucks!</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(3)}</h5>
+                                <p class="card-text post-text"> {this.getText(3)} </p>
                             </div>
                         </div>
                     </Link>
@@ -118,46 +133,46 @@ export default class PostsList extends React.Component {
                 </div>
                 <div class="row g-4 mb-4">
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(4)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://s3.amazonaws.com/cms.ipressroom.com/173/files/20154/North-African-Style-Honey-R.jpg"
                             alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">De Neve Pizza</h5>
-                                <p class="card-text post-text"> doododo deez </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(4)}</h5>
+                                <p class="card-text post-text"> {this.getText(4)}</p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(5)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://s3.amazonaws.com/cms.ipressroom.com/173/files/20154/554a8675299b50588c0011e0_Polenta-Panzanella-Salad/Polenta-Panzanella-Salad_318c3ae6-0c00-498f-86af-bffc134443ab-prv.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">BPlate burgers</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(5)}</h5>
+                                <p class="card-text post-text">{this.getText(4)}</p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(6)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="https://pbs.twimg.com/media/C4PfmHdVMAApMj4.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">This food sucks!</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(6)}</h5>
+                                <p class="card-text post-text"> {this.getText(6)} </p>
                             </div>
                         </div>
                     </Link>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-3">
-                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId()}>
+                    <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(7)}>
                         <div class="card border-light bg-dark text-white card-size">
                             <img src="http://menu.dining.ucla.edu/Content/Images/RecipeImages/123084.jpg" alt="food image" class="card-img-top card-img"/>
                             <div class="card-body overflow-auto">
-                                <h5 class="card-title card-text post-text">This food sucks!</h5>
-                                <p class="card-text post-text"> lalalaalala </p>
+                                <h5 class="card-title card-text post-text">{this.getTag(7)}</h5>
+                                <p class="card-text post-text"> {this.getText(7)}</p>
                             </div>
                         </div>
                     </Link>
