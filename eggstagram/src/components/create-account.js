@@ -62,7 +62,7 @@ export default class CreateAccount extends React.Component {
     render() {
         return (
             <div class="text-center">
-            <form className="signIn" onSubmit={this.onSubmit}>
+            <form class="signIn needs-validation" novalidate onSubmit={this.onSubmit}>
                 <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
                     alt="eggstagram logo" height="100"
                 />
@@ -73,11 +73,14 @@ export default class CreateAccount extends React.Component {
                         type="email"
                         id="emailAddress"
                         class="form-control"
-                        placeholder="Email Address (name@example.com)"
+                        placeholder="Email Address"
                         required
                         value={this.state.email}
                         onChange={this.onChangeEmail}
                     />
+                    <div class="invalid-feedback">
+                        Incorrect email address
+                    </div>
                 </div>
                 <div class="mb-3"> 
                     <label for="username" class="visually-hidden">Username:</label>

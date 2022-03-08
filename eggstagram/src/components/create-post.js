@@ -115,8 +115,8 @@ export default class CreatePost extends React.Component {
             <div class="container-fluid p-2 text-center">
                 <form class="text-box post-list mt-3" onSubmit={this.onSubmit}>
                     <h1 class="h3 mb-4 font-weight-normal text-white">Create a Review Post!</h1>
-                    <select id="dining-hall-tag" class="mb-4 form-select" aria-label="select-menu">
-                        <option selected disabled>Choose a Dining Hall</option>
+                    <select id="dining-hall-tag" class="mb-4 form-select" aria-label="select-menu" required>
+                        <option value="" selected disabled>Choose a Dining Hall</option>
                         {/* value is sent to server */}
                         <option value="Epicuria">Epicuria</option>
                         <option value="De_Neve">De Neve</option>
