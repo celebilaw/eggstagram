@@ -43,6 +43,11 @@ export default class CreatePost extends React.Component {
             }
         })
     }
+    onChangeUsername(user) {
+        this.setState({
+            username: user.target.value
+        });
+    }
 
     onChangeText(desc) {
         this.setState({
@@ -81,15 +86,32 @@ export default class CreatePost extends React.Component {
             username: this.state.username, // get from database
             text: this.state.text,
             image: this.state.image,
-            tag: this.state.tag,
+            tag: "de_neve",
             rating: this.state.rating,
-            likes: this.state.likes,
             date: new Date(),
+            //date: this.state.text,
+            //likes: this.state.likes,
         }
 
         console.log(post);
-        axios.post('http://localhost:5000/post', post)
-           .then(res => console.log(res.data));
+        axios.post("http://localhost:5000/post", post)
+            /*
+            .catch(function (error){
+                if(error.response){
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }else if(error.request){
+                    console.log(error.request)
+                }else{
+                    console.log("Error ", error.message)
+                }
+            });
+            */
+            .then(res => console.log(res.data))
+            //.catch(err => res.status(400).json('Error: ' + err));
+            
+           
 
         //window.location = "/feed";
     }

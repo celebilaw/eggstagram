@@ -16,7 +16,7 @@ const postSchema = new Schema({
     text: { type: String, required: true },
     image: {type: String, required: true},
     tag: {type: String, required: true},
-    rating: {type: Number, require: true},
+    rating: {type: Number, required: true},
     likes: {type: Number, default: 0},
     likedBy: [String],
     comments: [commentSchema],

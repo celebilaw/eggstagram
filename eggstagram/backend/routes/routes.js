@@ -62,12 +62,13 @@ router.route('/feed').get((req, res) => {
 
 // save new post to database
 router.route('/post').post((req, res) => {
+  console.log("I wish I worked");
   const username = req.body.username;
   const text = req.body.text;
   const image = req.body.image;
   const tag = req.body.tag;
   const rating = req.body.rating;
-  const date = Date.parse(req.body.date);
+  const date = req.body.date;
   const likes = 0;
   const newPost = new Post({username, text, image, tag, rating, likes, date});
   newPost.save()
