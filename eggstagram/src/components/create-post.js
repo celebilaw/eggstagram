@@ -91,6 +91,7 @@ export default class CreatePost extends React.Component {
 
         console.log(post);
         axios.post("http://localhost:5000/post", post)
+            .then(res => console.log(res.data))
             /*
             .catch(function (error){
                 if(error.response){
@@ -104,7 +105,7 @@ export default class CreatePost extends React.Component {
                 }
             });
             */
-            .then(res => console.log(res.data))
+            
             //.catch(err => res.status(400).json('Error: ' + err));
             
         window.location = "/feed";
