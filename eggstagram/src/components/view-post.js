@@ -2,6 +2,7 @@ import React from "react";
 import axios from 'axios';
 import '../css/postlist.css';
 import Rating from '@material-ui/lab/Rating';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Post = props => (
@@ -69,9 +70,10 @@ export default class ViewPost extends React.Component {
         })
     }
 
+    //height="500" width="500" class="img-fluid" alt=""
     isImage() {
-        if (this.state.image != "none") {
-            return <img src={this.state.post.image} alt="food image" class="card-img-top card-img"/>;
+        if (this.state.image !== "none") {
+            return <img src={this.state.post.image} alt="food img" class="card-img-top card-img"/>;
         }
         else 
             return;
@@ -172,52 +174,69 @@ export default class ViewPost extends React.Component {
 
     render() {
         return (
-            <div class="container-fluid p-2 text-left">
-                {this.isImage()}
-                <h5> {this.cuteTag()}                 
-                    <div>    
-                        
-                        <Rating
-                            name="Rating Label"
-                            value={this.state.rating}
-                            size="large"
-                            sx={{
-                                color: "rating-color"
-                            }}
-                        />
-                    </div></h5>
-                <p>Posted by {this.state.poster_username} on {(this.state.date).substring(0,10)}</p>
-
-                <p>{this.state.rating} stars</p>
-                <p> {this.state.text}</p>
-                <p>Liked by {this.state.likes} people &nbsp;&nbsp;
-                <button type="submit" onClick={this.onLike}>Like Post </button>
-                </p>
-                <p>Comment Section:</p>
-                {this.isComment(0)}
-                {this.isComment(1)}
-                {this.isComment(2)}
-                {this.isComment(3)}
-                {this.isComment(4)}
-                {this.isComment(5)}
-                {this.isComment(6)}
-                {this.isComment(7)}
-                {this.isComment(8)}              
-                <div>
-                        <label for="text" class="visually-hidden">Leave a Comment</label>
-                        <textarea
-                            type="text"
-                            id="description"
-                            class="form-control"
-                            placeholder="Enter Comment Here"
-                            required
-                            value={this.state.comment}
-                            onChange={this.onChangeComment}
-                            rows="2"
-                        >
-                        </textarea>
+            <div>
+                <section class="p-3">
+                    <div class="container">
+                        <div class="row align-items-center justify-content-between">
+                            <div class="col-md">
+                                {this.isImage()}
+                            </div>
+                            <div class="col-md p-4 bg-light">
+                                <h5 class="fw-bold"> {this.cuteTag()}                 
+                                    <div>    
+                                        <Rating
+                                            name="Rating Label"
+                                            value={this.state.rating}
+                                            size="large"
+                                            sx={{
+                                                color: "rating-color"
+                                            }}
+                                        />
+                                    </div>
+                                </h5>
+                                <p>Posted by {this.state.poster_username} on {(this.state.date).substring(0,10)}</p>
+                                <p class="lead"> {this.state.text}</p>
+                                <p class="fw-bold">Liked by {this.state.likes} people &nbsp;&nbsp;
+                                    <button class="btn btn-primary fw-bold" type="submit" onClick={this.onLike}> <i class="bi bi-hand-thumbs-up"></i>  Like Post </button>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                <button type="submit" onClick={this.onComment}>Submit Comment</button>
+                </section>
+
+                <section class="p-5 blueSection">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col align-self-center">
+                                <p class="text-white fw-bold">Comment Section:</p>
+                                {this.isComment(0)}
+                                {this.isComment(1)}
+                                {this.isComment(2)}
+                                {this.isComment(3)}
+                                {this.isComment(4)}
+                                {this.isComment(5)}
+                                {this.isComment(6)}
+                                {this.isComment(7)}
+                                {this.isComment(8)}              
+                                <div class="commentInput">
+                                    <label for="text" class="visually-hidden">Leave a Comment</label>
+                                    <textarea
+                                            type="text"
+                                            id="description"
+                                            class="form-control"
+                                            placeholder="Enter Comment Here"
+                                            required
+                                            value={this.state.comment}
+                                            onChange={this.onChangeComment}
+                                            rows="2"
+                                    >
+                                    </textarea>
+                                </div>
+                                <button class="btn btn-dark fw-bold" type="submit" onClick={this.onComment}> <i class="bi bi-chevron-right"></i> Submit Comment</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         )
     }

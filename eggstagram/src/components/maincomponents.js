@@ -183,7 +183,7 @@ export default class MainComponents extends React.Component {
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="https://marriland.com/wp-content/plugins/marriland-core/images/pokemon/sprites/home/full/celebi.webp" 
+                                        src="https://i.kym-cdn.com/photos/images/original/001/701/578/559.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="celebi pic" height="160"
                                     />
@@ -218,7 +218,7 @@ export default class MainComponents extends React.Component {
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="https://i.kym-cdn.com/photos/images/original/001/700/570/a69.jpg" 
+                                        src={require('./images/lego_grogu.jpg')} 
                                         class="rounded-circle mb-3"
                                         alt="marisa pic" height="160"
                                     />
@@ -235,7 +235,7 @@ export default class MainComponents extends React.Component {
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="https://i.kym-cdn.com/photos/images/original/001/700/570/a69.jpg" 
+                                        src="https://i.kym-cdn.com/photos/images/newsfeed/001/701/596/9d5.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="noah pic" height="160"
                                     />

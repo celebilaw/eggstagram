@@ -31,3 +31,14 @@
     top:0px;
     left:0px
 }
+
+.blueSection{
+    background-color: #2774AE;
+}
+
+.commentInput {
+    width: 450px;
+    overflow-y: auto;
+    padding-bottom: 10px;
+    outline: black;
+}
