@@ -73,7 +73,7 @@ export default class CreateAccount extends React.Component {
                         type="email"
                         id="emailAddress"
                         class="form-control"
-                        placeholder="Email Address"
+                        placeholder="Email Address (name@example.com)"
                         required
                         value={this.state.email}
                         onChange={this.onChangeEmail}
