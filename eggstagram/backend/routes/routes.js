@@ -7,8 +7,6 @@ let User = require('../models/user.model');
 let Post = require('../models/post.model');
 let Comment = require('../models/post.model'); // is this part of the access issue? 
 
-console.log("hey");
-
 // return all users found in the database
 router.route('/users').get((req, res) => {
   User.find()
@@ -62,7 +60,6 @@ router.route('/feed').get((req, res) => {
 
 // save new post to database
 router.route('/post').post((req, res) => {
-  console.log("I wish I worked");
   const username = req.body.username;
   const text = req.body.text;
   const image = req.body.image;
