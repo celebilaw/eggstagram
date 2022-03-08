@@ -78,10 +78,14 @@ export default class CreatePost extends React.Component {
         var dining_tag = document.getElementById("dining-hall-tag");
         var dining_hall_tag = dining_tag.value;
 
+        var imageString = this.state.image;
+        if(imageString == "")
+            imageString = "none"
+
         const post = {
             username: this.state.username, // get from database
             text: this.state.text,
-            image: this.state.image,
+            image: imageString,
             tag: dining_hall_tag,
             rating: this.state.rating,
             date: new Date(),
@@ -91,6 +95,7 @@ export default class CreatePost extends React.Component {
 
         console.log(post);
         axios.post("http://localhost:5000/post", post)
+            .then(res => console.log(res.data))
             /*
             .catch(function (error){
                 if(error.response){
@@ -104,7 +109,7 @@ export default class CreatePost extends React.Component {
                 }
             });
             */
-            .then(res => console.log(res.data))
+            
             //.catch(err => res.status(400).json('Error: ' + err));
             
         window.location = "/feed";
