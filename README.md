@@ -9,9 +9,15 @@
 * Discussion 1D - Dennis van Ee
 
 ## Run Eggstagram!
+### Initial Set Up
 1. git clone our project into the folder you want it to be in!
 2. Navigate into the folder eggstagram/eggstagram
 3. Run 'npm install' 
-4. Run 'npm start'
-5. Eggstagram will open in a new browser at http://localhost:3000
-6. Start interacting with our website!
+### Starting Backend
+4. Navigate into the folder eggstagram/eggstagram/backend
+5. Run 'nodemon server'
+### Starting Front End
+6. Run 'npm start'
+### Using the Website
+8. Eggstagram will open in a new browser at http://localhost:3000
+9. Start interacting with our website!
