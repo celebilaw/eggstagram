@@ -188,7 +188,7 @@ export default class MainComponents extends React.Component {
                                         alt="celebi pic" height="160"
                                     />
                                     <h3 class="card-title mb-3">Celebi Law</h3>
-                                    <p class="card-text"> Hello, this is Celebi lol.</p>
+                                    <p class="card-text"> Hello, this is Celebi.</p>
                                     {/*LOTS of Warnings here because we need to provide valid href links*/}
                                     <a href="https://www.linkedin.com/in/celebilaw/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
                                     <a href="https://github.com/celebilaw" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
