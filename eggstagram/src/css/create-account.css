@@ -6,3 +6,8 @@
 .signUpButton {
     background-color: #8BB8E8;
 }
+
+.error-color {
+    color: red;
+    font-weight: bold;
+}

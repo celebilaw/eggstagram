@@ -1,6 +1,8 @@
 import React from "react";
 import axios from 'axios';
 import '../css/postlist.css';
+import Rating from '@material-ui/lab/Rating';
+
 
 const Post = props => (
     <tr>
@@ -137,7 +139,7 @@ export default class ViewPost extends React.Component {
         return tagList[i];
     }
 
-    //not necessayr unless comment liking is working
+    //not necessary unless comment liking is working
     getId(i) {
         let postList = this.commentList();
         let idList = [];
@@ -152,18 +154,55 @@ export default class ViewPost extends React.Component {
         return textList[i];
     }
 
+    getDate(i) {
+        let postList = this.commentList();
+        let textList = [];
+        postList.forEach(d => textList.push(d.props.post.date));
+        return textList[i];
+    }
+
+    isComment(i) {
+        if (this.state.comments.length > i) {
+            return <p> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+        }
+        else {
+            return;
+        }
+    }
+
     render() {
         return (
-            <div>
+            <div class="container-fluid p-2 text-left">
                 {this.isImage()}
-                <h5> {this.cuteTag()}</h5>
-                <p>{this.state.poster_username}</p>
+                <h5> {this.cuteTag()}                 
+                    <div>    
+                        
+                        <Rating
+                            name="Rating Label"
+                            value={this.state.rating}
+                            size="large"
+                            sx={{
+                                color: "rating-color"
+                            }}
+                        />
+                    </div></h5>
+                <p>Posted by {this.state.poster_username} on {(this.state.date).substring(0,10)}</p>
+
                 <p>{this.state.rating} stars</p>
                 <p> {this.state.text}</p>
-                <p>Liked by {this.state.likes} people</p>
+                <p>Liked by {this.state.likes} people &nbsp;&nbsp;
                 <button type="submit" onClick={this.onLike}>Like Post </button>
-                <button type="submit" onClick={this.onComment}>Submit Comment</button>
-                <p>Comment Section: {this.getUser(0)} said: {this.getText(0)} </p>
+                </p>
+                <p>Comment Section:</p>
+                {this.isComment(0)}
+                {this.isComment(1)}
+                {this.isComment(2)}
+                {this.isComment(3)}
+                {this.isComment(4)}
+                {this.isComment(5)}
+                {this.isComment(6)}
+                {this.isComment(7)}
+                {this.isComment(8)}              
                 <div>
                         <label for="text" class="visually-hidden">Leave a Comment</label>
                         <textarea
@@ -174,10 +213,11 @@ export default class ViewPost extends React.Component {
                             required
                             value={this.state.comment}
                             onChange={this.onChangeComment}
-                            rows="3"
+                            rows="2"
                         >
                         </textarea>
                     </div>
+                <button type="submit" onClick={this.onComment}>Submit Comment</button>
             </div>
         )
     }

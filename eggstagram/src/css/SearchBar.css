@@ -55,9 +55,9 @@ a {
     text-decoration: none;
 }
   
-/* a:hover {
-    background-color: lightgrey;
-} */
+a:hover {
+    background-color: lightblue;
+}
 
 #clearBtn {
     cursor: pointer;

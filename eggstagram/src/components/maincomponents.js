@@ -52,48 +52,48 @@ export default class MainComponents extends React.Component {
                     <div class="carousel-item active">
                         <div class="row g-0">
                             <div class="col-3">
-                                <img src={require('./images/epic.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/epic.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/pancakes.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/pancakes.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/noodles.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/noodles.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/sandwich.png')} class="d-block w-100" alt="missing image" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                    <div class="row g-0">
-                            <div class="col-3">
-                                <img src={require('./images/pic1.png')} class="d-block w-100" alt="missing image" />
-                            </div>
-                            <div class="col-3">
-                                <img src={require('./images/pic2.png')} class="d-block w-100" alt="missing image" />
-                            </div>
-                            <div class="col-3">
-                                <img src={require('./images/pic3.png')} class="d-block w-100" alt="missing image" />
-                            </div>
-                            <div class="col-3">
-                                <img src={require('./images/pic4.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/sandwich.png')} class="d-block w-100" alt="missing" />
                             </div>
                         </div>
                     </div>
                     <div class="carousel-item">
                     <div class="row g-0">
                             <div class="col-3">
-                                <img src={require('./images/pic5.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/pic1.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/pic6.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/pic2.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/pic7.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/pic3.png')} class="d-block w-100" alt="missing" />
                             </div>
                             <div class="col-3">
-                                <img src={require('./images/bread.png')} class="d-block w-100" alt="missing image" />
+                                <img src={require('./images/pic4.png')} class="d-block w-100" alt="missing" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                    <div class="row g-0">
+                            <div class="col-3">
+                                <img src={require('./images/pic5.png')} class="d-block w-100" alt="missing" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic6.png')} class="d-block w-100" alt="missing" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/pic7.png')} class="d-block w-100" alt="missing" />
+                            </div>
+                            <div class="col-3">
+                                <img src={require('./images/bread.png')} class="d-block w-100" alt="missing" />
                             </div>
                         </div>
                     </div>

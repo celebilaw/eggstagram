@@ -15,6 +15,9 @@ export default class CreateAccount extends React.Component {
             username: "",
             email: "",
             password: "",
+            userError: "",
+            emailError: "",
+            pswdError: "",
         }
 
         document.body.style.backgroundColor = "#FFD100";
@@ -38,8 +41,42 @@ export default class CreateAccount extends React.Component {
         });
     }
 
+    validate = () => {
+        let uError = "";
+        let eError = "";
+        let pError = "";
+
+        if (!this.state.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            eError = "Please enter a valid email address";
+        }
+
+        if (!this.state.username) {
+            uError = "Please enter a username";
+        }
+
+        if (this.state.password.length < 5 || this.state.password.length > 15) {
+            pError = "Please enter a password (5-15 letters)";
+        }
+
+        if (eError !== "" || uError !== "" || pError !== "") {
+            this.setState({
+                emailError: eError,
+                userError: uError,
+                pswdError: pError,
+            });
+            return false;
+        }
+
+        return true;
+    }
+
     onSubmit(submit) {
         submit.preventDefault();
+
+        const isValid = this.validate();
+        if (!isValid) {
+            return;
+        }
 
         const user = {
             username: this.state.username,
@@ -56,30 +93,36 @@ export default class CreateAccount extends React.Component {
             username: "",
             email: "",
             password: "",
+            userError: "",
+            emailError: "",
+            pswdError: "",
         });
     }
 
     render() {
         return (
             <div class="text-center">
-            <form className="signIn" onSubmit={this.onSubmit}>
+            <form class="signIn" noValidate onSubmit={this.onSubmit}>
                 <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
                     alt="eggstagram logo" height="100"
                 />
                 <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
-                <div class="mb-3"> 
+                <div class="mb-1"> 
                     <label for="emailAddress" class="visually-hidden">Email Address:</label>
                     <input  
-                        type="email"
+                        type="text"
                         id="emailAddress"
                         class="form-control"
-                        placeholder="Email Address (name@example.com)"
+                        placeholder="Email Address"
                         required
                         value={this.state.email}
                         onChange={this.onChangeEmail}
                     />
                 </div>
-                <div class="mb-3"> 
+                <div class="mb-3 error-color">
+                    {this.state.emailError}
+                </div>
+                <div class="mb-1"> 
                     <label for="username" class="visually-hidden">Username:</label>
                     <input  
                         type="username"
@@ -91,7 +134,10 @@ export default class CreateAccount extends React.Component {
                         onChange={this.onChangeUsername}
                     />
                 </div>
-                <div> 
+                <div class="mb-3 error-color">
+                    {this.state.userError}
+                </div>
+                <div class="mb-1"> 
                     <label for="password" class="visually-hidden">Password:</label>
                     <input  
                         type="password"
@@ -103,7 +149,10 @@ export default class CreateAccount extends React.Component {
                         onChange={this.onChangePassword}
                     />
                 </div>
-                <div class="mt-3">
+                <div class="mb-3 error-color">
+                    {this.state.pswdError}
+                </div>
+                <div>
                     <button type="submit" class="btn btn-lg signUpButton btn-block">Sign Up</button>
                 </div>
             </form>

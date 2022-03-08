@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import '../css/postlist.css';
 import axios from 'axios';
 import SearchBar from "./SearchBar";
-import Data from '../Data.json'; //fake data from post descriptions
-//need to use axios to obtain post descriptions from database instead
-//from just from a fake data set.
 
 const Post = props => (
     <tr>
@@ -57,7 +54,26 @@ export default class PostsList extends React.Component {
         let postList = this.postList();
         let tagList = [];
         postList.forEach(d => tagList.push(d.props.post.tag));
-        return tagList[i];
+        switch(tagList[i]) {
+            case "de_neve":
+            case "De_Neve":
+                return <p>De Neve</p>;
+                break;
+            case "Bruin_Plate":
+                return <p>Bruin Plate</p>;
+                break;
+            case "Bruin_Cafe":
+                return <p>Bruin Cafe</p>;
+                break;
+            case "The_Study":
+                return <p>The Study at Hedrick</p>;
+                break;
+            case "The_Drey":
+                return <p>The Drey</p>;
+                break;
+            default:
+                return <p>{tagList[i]}</p>;
+        }
     }
 
     getId(i) {
@@ -74,11 +90,10 @@ export default class PostsList extends React.Component {
         return textList[i];
     }
 
-
     render() {
         return (
             <div class="container-fluid">
-                <SearchBar placeholder="Enter post description" data={Data}/>
+                <SearchBar placeholder="Enter post description" data={this.state.posts}/>
                 <br />
                 <p>You are on the Feed Component!</p>
                     <tbody>
