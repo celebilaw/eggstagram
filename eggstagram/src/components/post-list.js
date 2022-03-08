@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import '../css/postlist.css';
 import axios from 'axios';
 import SearchBar from "./SearchBar";
-import Data from '../Data.json'; //fake data from post descriptions
-//need to use axios to obtain post descriptions from database instead
-//from just from a fake data set.
 
 const Post = props => (
     <tr>
@@ -96,7 +93,7 @@ export default class PostsList extends React.Component {
     render() {
         return (
             <div class="container-fluid">
-                <SearchBar placeholder="Enter post description" data={Data}/>
+                <SearchBar placeholder="Enter post description" data={this.state.posts}/>
                 <br />
                 <p>You are on the Feed Component!</p>
                     <tbody>
