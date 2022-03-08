@@ -55,7 +55,7 @@ a {
     text-decoration: none;
 }
   
-a:hover {
+.search-bar:hover {
     background-color: lightblue;
 }
 

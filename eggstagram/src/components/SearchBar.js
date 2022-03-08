@@ -40,7 +40,7 @@ function SearchBar({ placeholder, data }) {
             <div className="dataResult">
                 {filteredData.map((value, key) => {
                     return (
-                        <a className="dataItem" href={"http://localhost:3000/posts/"+value._id}>
+                        <a className="dataItem search-bar" href={"http://localhost:3000/posts/"+value._id}>
                             <p>{value.text} </p>
                         </a>
                     );

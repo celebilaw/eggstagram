@@ -18,6 +18,7 @@ export default class CreateAccount extends React.Component {
             userError: "",
             emailError: "",
             pswdError: "",
+            success: "",
         }
 
         document.body.style.backgroundColor = "#FFD100";
@@ -67,6 +68,10 @@ export default class CreateAccount extends React.Component {
             return false;
         }
 
+        this.setState({
+            success: "Account Successfully Created!"
+        })
+
         return true;
     }
 
@@ -102,61 +107,64 @@ export default class CreateAccount extends React.Component {
     render() {
         return (
             <div class="text-center">
-            <form class="signIn" noValidate onSubmit={this.onSubmit}>
-                <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
-                    alt="eggstagram logo" height="100"
-                />
-                <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
-                <div class="mb-1"> 
-                    <label for="emailAddress" class="visually-hidden">Email Address:</label>
-                    <input  
-                        type="text"
-                        id="emailAddress"
-                        class="form-control"
-                        placeholder="Email Address"
-                        required
-                        value={this.state.email}
-                        onChange={this.onChangeEmail}
+                <form class="signIn" noValidate onSubmit={this.onSubmit}>
+                    <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
+                        alt="eggstagram logo" height="100"
                     />
+                    <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
+                    <div class="mb-1"> 
+                        <label for="emailAddress" class="visually-hidden">Email Address:</label>
+                        <input  
+                            type="text"
+                            id="emailAddress"
+                            class="form-control"
+                            placeholder="Email Address"
+                            required
+                            value={this.state.email}
+                            onChange={this.onChangeEmail}
+                        />
+                    </div>
+                    <div class="mb-3 error-color">
+                        {this.state.emailError}
+                    </div>
+                    <div class="mb-1"> 
+                        <label for="username" class="visually-hidden">Username:</label>
+                        <input  
+                            type="username"
+                            id="username"
+                            placeholder="Username"
+                            class="form-control"
+                            required
+                            value={this.state.username}
+                            onChange={this.onChangeUsername}
+                        />
+                    </div>
+                    <div class="mb-3 error-color">
+                        {this.state.userError}
+                    </div>
+                    <div class="mb-1"> 
+                        <label for="password" class="visually-hidden">Password:</label>
+                        <input  
+                            type="password"
+                            id="password"
+                            placeholder="Password"
+                            class="form-control"
+                            required
+                            value={this.state.password}
+                            onChange={this.onChangePassword}
+                        />
+                    </div>
+                    <div class="mb-3 error-color">
+                        {this.state.pswdError}
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-lg signUpButton btn-block">Sign Up</button>
+                    </div>
+                </form>
+                <div class="mt-3 success-color">
+                    {this.state.success}
                 </div>
-                <div class="mb-3 error-color">
-                    {this.state.emailError}
-                </div>
-                <div class="mb-1"> 
-                    <label for="username" class="visually-hidden">Username:</label>
-                    <input  
-                        type="username"
-                        id="username"
-                        placeholder="Username"
-                        class="form-control"
-                        required
-                        value={this.state.username}
-                        onChange={this.onChangeUsername}
-                    />
-                </div>
-                <div class="mb-3 error-color">
-                    {this.state.userError}
-                </div>
-                <div class="mb-1"> 
-                    <label for="password" class="visually-hidden">Password:</label>
-                    <input  
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        class="form-control"
-                        required
-                        value={this.state.password}
-                        onChange={this.onChangePassword}
-                    />
-                </div>
-                <div class="mb-3 error-color">
-                    {this.state.pswdError}
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-lg signUpButton btn-block">Sign Up</button>
-                </div>
-            </form>
-          </div>
+            </div>
         )
     }
 }

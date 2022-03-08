@@ -11,3 +11,9 @@
     color: red;
     font-weight: bold;
 }
+
+.success-color {
+    color: mediumseagreen;
+    font-weight: bold;
+    font-size: 20px;
+}
