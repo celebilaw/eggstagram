@@ -59,7 +59,7 @@ router.route('/feed').get((req, res) => {
 });
 
 // save new post to database
-router.route('/post').post((req, res) => {
+router.route('/post').post(login, (req, res) => {
   const username = req.body.username;
   const text = req.body.text;
   const image = req.body.image;

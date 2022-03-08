@@ -94,25 +94,20 @@ export default class CreatePost extends React.Component {
         }
 
         console.log(post);
-        axios.post("http://localhost:5000/post", post)
-            .then(res => console.log(res.data))
-            /*
-            .catch(function (error){
-                if(error.response){
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                }else if(error.request){
-                    console.log(error.request)
-                }else{
-                    console.log("Error ", error.message)
-                }
-            });
-            */
-            
-            //.catch(err => res.status(400).json('Error: ' + err));
-            
-        window.location = "/feed";
+
+        let myToken = localStorage.getItem('jwt')
+        if (myToken !== null) {
+            axios.post("http://localhost:5000/post", post, { headers: { 'authorization': myToken }})
+                .then(res => {
+                    console.log(res.data)
+                    window.location = "/feed";
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        } else {
+            console.log("not logged in")
+        }
     }
 
     render() {
