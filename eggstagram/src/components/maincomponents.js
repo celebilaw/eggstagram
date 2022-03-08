@@ -108,9 +108,9 @@ export default class MainComponents extends React.Component {
                 </button>
             </div>
 
-            <section class="p-2 text-white text-center">
-                <h1>Welcome to Eggstagram!</h1>
-                <p>A project inspired by Eggs, Instagram, and EGGERT</p>
+            <section class="p-2 text-white text-center" >
+                <h1 style={{fontWeight: "bold"}}>Welcome to Eggstagram!</h1>
+                <p style={{fontWeight: "bold"}}>A project inspired by Eggs, Instagram, and EGGERT</p>
             </section>
             
             <section id="faq" class="p-4 whiteSection">
@@ -168,8 +168,8 @@ export default class MainComponents extends React.Component {
             </section>
 
             <section class="p-3 text-white text-center">
-                <h5> #1 BEST COLLEGE FOOD IN AMERICA!? </h5>
-                <h6> Let us know what you think! </h6>
+                <h5 style={{fontWeight: "bold"}}> #1 BEST COLLEGE FOOD IN AMERICA!? </h5>
+                <h6 style={{fontWeight: "bold"}}> Let us know what you think! </h6>
             </section>
 
             <section id="developers" class="p-5 newsletter-custom">
@@ -179,7 +179,7 @@ export default class MainComponents extends React.Component {
                         We Are Computer Science Students @ UCLA
                     </p>
                     <div class="row">
-                        <div class="col-md-15 col-sm-4">
+                        <div class="col-lg-15 col-md-15 col-sm-4">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
@@ -190,78 +190,78 @@ export default class MainComponents extends React.Component {
                                     <h3 class="card-title mb-3">Celebi Law</h3>
                                     <p class="card-text"> Hello, this is Celebi lol.</p>
                                     {/*LOTS of Warnings here because we need to provide valid href links*/}
-                                    <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/celebilaw/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                                    <a href="https://github.com/celebilaw" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
+                                    <a href="https://twitter.com/celebilaw" target="_blank" rel="noreferrer noopener"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                    <a href="https://www.instagram.com/celebilaw/" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-15 col-sm-4">
+                        <div class="col-lg-15 col-md-15 col-sm-4">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src=""
+                                        src="https://i.kym-cdn.com/photos/images/original/001/700/570/a69.jpg"
                                         class="rounded-circle mb-3"
-                                        alt="joel pic"
+                                        alt="joel pic" height="160"
                                     />
                                     <h3 class="card-title mb-3">Joel Hernandez</h3>
                                     <p class="card-text"> Hello, this is Joel.</p>
-                                    <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/joel-hernandez-b978381b8/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                                    <a href="https://github.com/joelh11" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
+                                    <a href="https://twitter.com/jjoel_h" target="_blank" rel="noreferrer noopener"><i class="bi bi-twitter text-dark mx-1"></i></a>
+                                    <a href="https://www.instagram.com/jjoel.h/" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-15 col-sm-4">
+                        <div class="col-lg-15 col-md-15 col-sm-4">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="" 
+                                        src="https://i.kym-cdn.com/photos/images/original/001/700/570/a69.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="marisa pic" height="160"
                                     />
                                     <h3 class="card-title mb-3">Marisa Duran</h3>
                                     <p class="card-text"> Hello, this is Marisa.</p>
-                                    <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/marisa-duran-01/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                                    <a href="https://github.com/mgduran" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
                                     <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                    <a href="https://www.instagram.com/marisadurann/" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-15 col-sm-4">
+                        <div class="col-lg-15 col-md-15 col-sm-4">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="" 
+                                        src="https://i.kym-cdn.com/photos/images/original/001/700/570/a69.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="noah pic" height="160"
                                     />
                                     <h3 class="card-title mb-3">Noah Gardner</h3>
                                     <p class="card-text"> Hello, this is Noah.</p>
-                                    <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/noah-gardner-83a1aa1b9/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                                    <a href="https://github.com/NoahG303/" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
                                     <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
                                     <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-15 col-sm-4">
+                        <div class="col-lg-15 col-md-15 col-sm-4">
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="" 
+                                        src="https://i.redd.it/lqzl8tuho6c41.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="matthew pic" height="160"
                                     />
-                                    <h3 class="card-title mb-3">Matthew Workman</h3>
+                                    <h3 class="card-title mb-3" style={{fontSize:"1.5rem", paddingTop: "4px"}}>Matthew Workman</h3>
                                     <p class="card-text"> Hello, this is Matthew.</p>
-                                    <a href="#"><i class="bi bi-linkedin text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-github text-dark mx-1"></i></a>
+                                    <a href="https://www.linkedin.com/in/m-workman41/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
+                                    <a href="https://github.com/wathmew" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
                                     <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                    <a href="https://www.instagram.com/wathmew/" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>

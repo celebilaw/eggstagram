@@ -125,13 +125,13 @@ export default class CreatePost extends React.Component {
                         <option selected disabled>Choose a Dining Hall</option>
                         {/* value is sent to server */}
                         <option value="Epicuria">Epicuria</option>
-                        <option value="De Neve">De Neve</option>
+                        <option value="De_Neve">De Neve</option>
                         <option value="Feast">Feast</option>
-                        <option value="Bruin Plate">Bruin Plate</option>
-                        <option value="Bruin Cafe">Bruin Cafe</option>
+                        <option value="Bruin_Plate">Bruin Plate</option>
+                        <option value="Bruin_Cafe">Bruin Cafe</option>
                         <option value="Rendezvous">Rendezvous</option>
-                        <option value="The Study at Hedrick">The Study at Hedrick</option>
-                        <option value="The Drey">The Drey</option>
+                        <option value="The_Study">The Study at Hedrick</option>
+                        <option value="The_Drey">The Drey</option>
                     </select>
                     <div className="mb-4">
                         <label for="text" class="visually-hidden">Description</label>
