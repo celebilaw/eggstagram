@@ -57,7 +57,26 @@ export default class PostsList extends React.Component {
         let postList = this.postList();
         let tagList = [];
         postList.forEach(d => tagList.push(d.props.post.tag));
-        return tagList[i];
+        switch(tagList[i]) {
+            case "de_neve":
+            case "De_Neve":
+                return <p>De Neve</p>;
+                break;
+            case "Bruin_Plate":
+                return <p>Bruin Plate</p>;
+                break;
+            case "Bruin_Cafe":
+                return <p>Bruin Cafe</p>;
+                break;
+            case "The_Study":
+                return <p>The Study at Hedrick</p>;
+                break;
+            case "The_Drey":
+                return <p>The Drey</p>;
+                break;
+            default:
+                return <p>{tagList[i]}</p>;
+        }
     }
 
     getId(i) {
@@ -73,7 +92,6 @@ export default class PostsList extends React.Component {
         postList.forEach(d => textList.push(d.props.post.text));
         return textList[i];
     }
-
 
     render() {
         return (
