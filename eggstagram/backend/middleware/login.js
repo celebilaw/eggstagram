@@ -3,7 +3,6 @@ require("dotenv").config();
 const User = require('../models/user.model');
 
 module.exports=(req,res,next)=>{
-    console.log(req.headers)
     const {authorization}=req.headers
     if(!authorization)
     {

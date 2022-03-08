@@ -5,6 +5,17 @@ import '../css/navbar.css';
 
 export default class Navbar extends React.Component {
   render() {
+    let tokenString = localStorage.getItem('jwt');
+    let loggedIn = false;
+    if (!(tokenString === null)) {
+      loggedIn = true;
+    }
+
+    function logoutFunc() {
+      localStorage.removeItem('jwt');
+      window.location.reload();
+    }
+
     return (
       <nav className="navbar navbar-expand-sm navbar-custom fixed-top">
         <div className="container-fluid">
@@ -31,7 +42,8 @@ export default class Navbar extends React.Component {
                 <Link className="nav-link navbar-text" to="/register">Create an Account</Link>
               </li>
               <li className="nav-item">
-                <Link class="btn login-button text-white" to="/login">Login</Link>
+                {loggedIn && <button class="btn login-button text-white" onClick={logoutFunc}>Logout</button>}
+                {!loggedIn && <Link class="btn login-button text-white" to="/login">Login</Link>}
               </li>
             </ul>
           </div>

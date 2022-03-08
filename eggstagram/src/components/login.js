@@ -38,10 +38,11 @@ export default class Login extends React.Component {
             password: this.state.password,
         }
 
-        console.log(user);
-
         axios.post('http://localhost:5000/login', user)
-           .then(res => console.log(res.data));
+           .then(res => {
+               localStorage.setItem('jwt', res.data.token)
+               window.location = "/feed";
+           });
         
         this.setState({
             email: "",
