@@ -9,7 +9,6 @@ export default class CreatePost extends React.Component {
 
         this.onChangeText = this.onChangeText.bind(this);
         this.onChangeImage = this.onChangeImage.bind(this);
-        this.onChangeTag = this.onChangeTag.bind(this);
         this.onChangeRating = this.onChangeRating.bind(this);
         this.onChangeDate = this.onChangeDate.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -61,12 +60,6 @@ export default class CreatePost extends React.Component {
         });
     }
 
-    onChangeTag(tag) {
-        this.setState({
-            tag: tag.target.value
-        });
-    }
-
     onChangeRating(newValue) {
         this.setState({
             rating: newValue
@@ -82,11 +75,14 @@ export default class CreatePost extends React.Component {
     onSubmit(submit) {
         submit.preventDefault();
 
+        var dining_tag = document.getElementById("dining-hall-tag");
+        var dining_hall_tag = dining_tag.value;
+
         const post = {
             username: this.state.username, // get from database
             text: this.state.text,
             image: this.state.image,
-            tag: "de_neve",
+            tag: dining_hall_tag,
             rating: this.state.rating,
             date: new Date(),
             //date: this.state.text,
@@ -111,9 +107,7 @@ export default class CreatePost extends React.Component {
             .then(res => console.log(res.data))
             //.catch(err => res.status(400).json('Error: ' + err));
             
-           
-
-        //window.location = "/feed";
+        window.location = "/feed";
     }
 
     render() {
@@ -121,7 +115,7 @@ export default class CreatePost extends React.Component {
             <div class="container-fluid p-2 text-center">
                 <form class="text-box post-list mt-3" onSubmit={this.onSubmit}>
                     <h1 class="h3 mb-4 font-weight-normal text-white">Create a Review Post!</h1>
-                    <select class="mb-4 form-select" aria-label="select-menu">
+                    <select id="dining-hall-tag" class="mb-4 form-select" aria-label="select-menu">
                         <option selected disabled>Choose a Dining Hall</option>
                         {/* value is sent to server */}
                         <option value="Epicuria">Epicuria</option>
