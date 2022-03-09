@@ -44,7 +44,7 @@ export default class PostsList extends React.Component {
             searchTag="";
         }
         else if (ratingVal !== -1 && ratingVal !== null) { //filters by rating
-            axios.get('http://localhost:5000/feed/stars/'+ratingVal)
+            axios.get('http://localhost:8080/feed/stars/'+ratingVal)
             .then(response => {
                 this.setState({posts: response.data})
             })
