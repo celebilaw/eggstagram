@@ -167,7 +167,7 @@ export default class PostsList extends React.Component {
         return (
             <div class="container-fluid">
                 <br />
-                <h1 class="mt-3 text-center text-white">Review Feed</h1>
+                <h1 class="mt-3 text-center text-primary ">Review Feed</h1>
                 <SearchBar placeholder="Search for a post description" data={this.state.posts}/>
                 <br />
 
