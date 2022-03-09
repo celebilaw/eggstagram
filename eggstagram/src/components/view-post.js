@@ -45,13 +45,8 @@ export default class ViewPost extends React.Component {
     componentDidMount() {
         let loc = window.location.pathname
         console.log(loc)
-        axios.get('http://localhost:5000/users/')
-        .then(response => {
-            if (response.data.length > 0) {
-                this.setState({
-                    user_username: response.data[0].username
-                })
-            }
+        this.setState({
+            user_username: localStorage.getItem('username')
         })
         axios.get('http://localhost:5000' + loc)
         .then(response => {

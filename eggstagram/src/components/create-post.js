@@ -37,7 +37,7 @@ export default class CreatePost extends React.Component {
             if (response.data.length > 0) {
                 this.setState({
                     users: response.data.map(user => user.username),
-                    username: response.data[0].username
+                    username: localStorage.getItem('username')
                 })
             }
         })

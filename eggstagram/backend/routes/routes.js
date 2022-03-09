@@ -40,15 +40,11 @@ router.route('/login').post((req, res) => {
         .then(match=>{
           if (match) {
             const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '900s' })
-            return res.json({'token':token})
+            const username=savedUser.username
+            return res.json({'token':token,'username':username})
           }
         })
     })
-});
-
-// protected area
-router.get('/protected',login,(req,res)=>{
-  res.send("hello");
 });
 
 // return all posts found in the database, most recent first
