@@ -90,6 +90,16 @@ export default class PostsList extends React.Component {
                 return <p>{tagList[i]}</p>;
         }
     }
+    getImage(i) {
+        let postList = this.postList();
+        let imgList = [];
+        postList.forEach(d => imgList.push(d.props.post.image));
+        if (imgList[i] == "none") {
+            return "https://i.imgur.com/Wv0Vmys.jpg";
+            //set equal to eggstagram logo and return
+        }
+        return imgList[i];
+    }
 
     getId(i) {
         let postList = this.postList();
@@ -102,7 +112,7 @@ export default class PostsList extends React.Component {
         let postList = this.postList();
         let textList = [];
         postList.forEach(d => textList.push(d.props.post.text));
-        return textList[i];
+        return textList[i] ;
     }
 
     onSubmit(submit) {
@@ -121,8 +131,7 @@ export default class PostsList extends React.Component {
                 <div class="col-sm-6 col-md-6 col-lg-3">
                 <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(i)}>
                     <div class="card border-light bg-dark text-white card-size">
-                        <img src="https://spoonuniversity.com/wp-content/uploads/sites/61/2015/11/flat-fread-1024x1024.png" alt="food image" class="card-img-top card-img"/>
-                        {/*<img src="https://www.citypng.com/public/uploads/preview/-51611552141cxqbb1ntp1.png" alt="heart" class="card-heart card-heart-bottom"/>*/}
+                        <img src={this.getImage(i)} alt="food image" class="card-img-top card-img"/>
                         <div class="card-body overflow-auto">
                             <h5 class="card-title card-text post-text">{this.getTag(i)}</h5>
                             <p class="card-text post-text"> {this.getText(i)} </p>

@@ -140,12 +140,12 @@ export default class CreatePost extends React.Component {
                         </textarea>
                     </div>
                     <div className="mb-4">
-                        <label for="formFile" class="visually-hidden">Image</label>
+                        <label for="text" class="visually-hidden">Image</label>
                         <input
-                            type="file"
-                            id="formFile"
+                            type="text"
+                            id="image"
                             class="form-control"
-                            placeholder="Attach an Image (optional)"
+                            placeholder="Attach an Image URL (optional)"
                             value={this.state.image}
                             onChange={this.onChangeImage}
                         />
