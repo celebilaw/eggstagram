@@ -10,14 +10,18 @@
 
 ## Run Eggstagram!
 ### Initial Set Up
-1. git clone our project into the folder you want it to be in!
-2. Navigate into the folder eggstagram/eggstagram
-3. Run 'npm install' 
+1. Run 'git clone <github link>' in the desired folder
+2. Navigate into the folder 'eggstagram/eggstagram'
+3. Run 'npm i cors express mongoose dotenv bcryptjs jsonwebtoken'
+4. Run 'npm i -g nodemon'
+5. Run 'npm install'
 ### Starting Backend
-4. Navigate into the folder eggstagram/eggstagram/backend
-5. Run 'nodemon server'
-### Starting Front End
-6. Run 'npm start'
+6. Navigate into the folder 'eggstagram/eggstagram/backend'
+7. Run 'nodemon server'
+### Starting Frontend
+8. Create a new terminal window
+9. Navigate into the folder 'eggstagram/eggstagram'
+10. Run 'npm start'
 ### Using the Website
-8. Eggstagram will open in a new browser at http://localhost:3000
-9. Start interacting with our website!
+11. Eggstagram will open in a new browser at http://localhost:3000
+12. Start interacting with our website! (explain)
