@@ -69,7 +69,7 @@ export default class CreateAccount extends React.Component {
         }
 
         this.setState({
-            success: "Account Successfully Created!"
+            success: ""
         })
 
         return true;
@@ -92,16 +92,39 @@ export default class CreateAccount extends React.Component {
         console.log(user);
 
         axios.post('http://localhost:5000/register', user)
-           .then(res => console.log(res.data));
-        
-        this.setState({
-            username: "",
-            email: "",
-            password: "",
-            userError: "",
-            emailError: "",
-            pswdError: "",
-        });
+            .then(res => {
+                this.setState({
+                    userError: "",
+                    emailError: "",
+                    pswdError: "",
+                })
+                if (res.data.eml === false) {
+                    if (res.data.usr === true) {
+                        this.setState({
+                            userError: ""
+                        })
+                    }
+                    this.setState({
+                        emailError: "That email is taken!"
+                    })
+                    return;
+                }
+                if (res.data.usr === false) {
+                    this.setState({
+                        userError: "That username is taken!"
+                    })
+                    return;
+                }
+                this.setState({
+                    success: "Account created!",
+                    username: "",
+                    email: "",
+                    password: "",
+                    userError: "",
+                    emailError: "",
+                    pswdError: "",
+                })
+            })
     }
 
     render() {
