@@ -203,6 +203,15 @@ export default class ViewPost extends React.Component {
         return comment_list;
     }
 
+    oneLike() {
+        if (this.state.likes == 1) {
+            return "person";
+        }
+        else {
+            return "people";
+        }
+    }
+
     render() {
         return (
             <div>
@@ -227,7 +236,7 @@ export default class ViewPost extends React.Component {
                                 </h5>
                                 <p>Posted by {this.state.poster_username} on {(this.state.date).substring(0,10)}</p>
                                 <p class="lead"> {this.state.text}</p>
-                                <p class="fw-bold">Liked by {this.state.likes} people &nbsp;&nbsp;
+                                <p class="fw-bold">Liked by {this.state.likes} {this.oneLike()} &nbsp;&nbsp;
                                     <button class="btn btn-primary fw-bold" type="submit" onClick={this.onLike}> <i class="bi bi-hand-thumbs-up"></i>  Like Post </button>
                                 </p>
                             </div>
