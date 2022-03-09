@@ -39,7 +39,7 @@ router.route('/login').post((req, res) => {
       bcrypt.compare(password,savedUser.password)
         .then(match=>{
           if (match) {
-            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '900s' })
+            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '3600s' })
             const username=savedUser.username
             return res.json({'token':token,'username':username})
           }

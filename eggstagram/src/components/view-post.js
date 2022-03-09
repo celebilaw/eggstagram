@@ -114,6 +114,17 @@ export default class ViewPost extends React.Component {
         if(myToken != null){
             console.log("commenting")
             axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+            .catch(function (error){
+                if(error.response){
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }else if(error.request){
+                    console.log(error.request)
+                }else{
+                    console.log("Error ", error.message)
+                }
+            });
             window.location = window.location.pathname;
         } else {
             console.log("not logged in");
