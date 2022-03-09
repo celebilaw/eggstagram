@@ -32,6 +32,7 @@ export default class ViewPost extends React.Component {
                     rating: 0,
                     tag: "",
                     likes: 0,
+                    likedBy: [],
                     date: "",
                     comments: [], 
                     comment: "", 
@@ -43,8 +44,7 @@ export default class ViewPost extends React.Component {
         this.onChangeComment = this.onChangeComment.bind(this);
     }
     componentDidMount() {
-        let loc = window.location.pathname
-        console.log(loc)
+        let loc = window.location.pathname;
         this.setState({
             user_username: localStorage.getItem('username')
         })
@@ -56,6 +56,7 @@ export default class ViewPost extends React.Component {
                             poster_username: response.data.username,
                             tag: response.data.tag,
                             likes: response.data.likes,
+                            likedBy: response.data.likedBy,
                             rating: response.data.rating,
                             date: response.data.date,
                             image: response.data.image})
@@ -68,7 +69,7 @@ export default class ViewPost extends React.Component {
     //height="500" width="500" class="img-fluid" alt=""
     isImage() {
         if (this.state.image !== "none") {
-            return <img src={this.state.post.image} alt="food img" class="card-img-top card-img"/>;
+            return <img src={this.state.image} alt="food img" class="card-img-top card-img"/>;
         }
         else 
             return;
@@ -111,6 +112,7 @@ export default class ViewPost extends React.Component {
         console.log(loc)
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
+            console.log("commenting")
             axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
             window.location = window.location.pathname;
         } else {
@@ -122,6 +124,12 @@ export default class ViewPost extends React.Component {
 
     onLike(like) {
         like.preventDefault();
+        for (let i = 0; i < this.state.likedBy.length; i++) {
+            if (this.state.user_username == this.state.likedBy[i]) {
+                console.log("Already liked post");
+                return;
+            }
+        } 
         let loc = window.location.pathname;
         let split = loc.split('/')
         loc = '/' + split[1] + '/like/' + split[2];
@@ -174,7 +182,7 @@ export default class ViewPost extends React.Component {
 
     isComment(i) {
         if (this.state.comments.length > i) {
-            return <p> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+            return <p class="text-white"> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
         }
         else {
             return;
