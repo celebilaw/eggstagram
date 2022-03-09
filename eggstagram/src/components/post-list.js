@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import '../css/postlist.css';
 import axios from 'axios';
 import SearchBar from "./SearchBar";
+import Rating from '@material-ui/lab/Rating';
 
 var searchTag="";
+var ratingVal=-1;
 
 const Post = props => (
     <tr>
@@ -27,6 +29,7 @@ export default class PostsList extends React.Component {
         this.state = {posts: []};
         document.body.style.backgroundColor = "#FFD100";
         this.onSubmit = this.onSubmit.bind(this);
+        this.onChangeRating = this.onChangeRating.bind(this);
     }
 
     componentDidMount() {
@@ -39,6 +42,16 @@ export default class PostsList extends React.Component {
                 console.log(error);
             })
             searchTag="";
+        }
+        else if (ratingVal !== -1 && ratingVal !== null) { //filters by rating
+            axios.get('http://localhost:5000/feed/stars/'+ratingVal)
+            .then(response => {
+                this.setState({posts: response.data})
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            ratingVal=-1;
         }
         else {
             axios.get('http://localhost:5000/feed/')
@@ -113,13 +126,20 @@ export default class PostsList extends React.Component {
         this.componentDidMount();
     }
 
+    onChangeRating(newValue) {
+        ratingVal = newValue;
+        this.componentDidMount();
+    }
+
     render() {
         return (
             <div class="container-fluid">
                 <br />
                 <p class="text-center">You are on the Feed Component!</p>
+
                 <SearchBar placeholder="Search for a post description" data={this.state.posts}/>
                 <br />
+
                 <form class="text-box" style={{ width: "250px", paddingLeft: "5px" }} onSubmit={this.onSubmit}>
                     <h1 class="h3 mb-6 font-weight-normal text-white" style={{ fontSize: "20px" }}>Or filter by tag!</h1>
                     <select id="search-tag" class="mb-4 form-select" aria-label="select-menu" required>
@@ -137,6 +157,17 @@ export default class PostsList extends React.Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <br />
+
+                <div className="mb-4" style={{ paddingLeft: "5px" }}>
+                <h1 class="h3 mb-6 font-weight-normal text-white" style={{ fontSize: "20px" }}>Or filter by rating!</h1>
+                    <Rating
+                        size="large"
+                        onChange={(event, newValue) => {
+                            this.onChangeRating(newValue);
+                        }}
+                    />
+                </div>
+
                 <tbody>
                     {console.log(this.getTag(1))}
                 </tbody>

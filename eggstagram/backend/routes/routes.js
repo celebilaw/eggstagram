@@ -119,6 +119,12 @@ router.route('/feed/:tag').get((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 }); 
 
+router.route('/feed/stars/:rating').get((req, res) => {
+  Post.find( {rating: req.params.rating} ).sort( {rating: "desc"})
+    .then(posts => res.json(posts))
+    .catch(err => res.status(400).json('Error: ' + err));
+});
+
 //sort posts by number of likes (most -> least)
 //change route tho? idk what to call it
 router.route('/feed-hot').get((req, res) => {
