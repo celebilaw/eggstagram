@@ -25,9 +25,6 @@ export default class MainComponents extends React.Component {
             email: this.state.email,
         }
         console.log(userNewsletter);
-
-        //axios.post('http://localhost:5000/post', post)
-          //  .then(res => console.log(res.data));
         
         this.setState({
             email: "",

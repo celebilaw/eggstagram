@@ -39,7 +39,7 @@ export default class Login extends React.Component {
             password: this.state.password,
         }
 
-        axios.post('http://localhost:5000/login', user)
+        axios.post('http://localhost:8080/login', user)
             .then(res => {
                 if (res.data.error === undefined) {
                     this.setState({

@@ -32,7 +32,7 @@ export default class CreatePost extends React.Component {
 
     // called right before anything is rendered on the webpage
     componentDidMount() {
-        axios.get('http://localhost:5000/users/')
+        axios.get('http://localhost:8080/users/')
         .then(response => {
             if (response.data.length > 0) {
                 this.setState({
@@ -95,7 +95,7 @@ export default class CreatePost extends React.Component {
 
         let myToken = localStorage.getItem('jwt')
         if (myToken !== null) {
-            axios.post("http://localhost:5000/post", post, { headers: { 'authorization': myToken }})
+            axios.post("http://localhost:8080/post", post, { headers: { 'authorization': myToken }})
                 .then(res => {
                     console.log(res.data)
                     window.location = "/feed";

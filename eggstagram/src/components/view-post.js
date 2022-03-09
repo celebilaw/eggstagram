@@ -48,7 +48,7 @@ export default class ViewPost extends React.Component {
         this.setState({
             user_username: localStorage.getItem('username')
         })
-        axios.get('http://localhost:5000' + loc)
+        axios.get('http://localhost:8080' + loc)
         .then(response => {
             console.log(response.data.text)
             this.setState({comments: response.data.comments})
@@ -113,7 +113,7 @@ export default class ViewPost extends React.Component {
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
             console.log("commenting")
-            axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
             .catch(function (error){
                 if(error.response){
                     console.log(error.response.data);
@@ -129,7 +129,7 @@ export default class ViewPost extends React.Component {
         } else {
             console.log("not logged in");
         }
-        //axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+        //axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
         //window.location = window.location.pathname;
     }
 
@@ -147,12 +147,12 @@ export default class ViewPost extends React.Component {
         console.log(loc)
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
-            axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+            axios.post("http://localhost:8080" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
             window.location = window.location.pathname;
         } else {
             console.log("not logged in");
         }
-        //axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+        //axios.post("http://localhost:8080" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
         //window.location = window.location.pathname;
     }
 
