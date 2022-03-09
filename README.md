@@ -12,8 +12,8 @@
 ### Initial Set Up
 1. Run 'git clone (github link)' in the desired folder
 2. Navigate into the folder 'eggstagram/eggstagram'
-3. Run 'npm i cors express mongoose dotenv bcryptjs jsonwebtoken'
-4. Run 'npm i -g nodemon'
+3. Run 'npm install cors express mongoose dotenv bcryptjs jsonwebtoken'
+4. Run 'npm install -g nodemon'
 5. Run 'npm install'
 ### Starting Backend
 6. Navigate into the folder 'eggstagram/eggstagram/backend'
