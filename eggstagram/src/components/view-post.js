@@ -191,13 +191,16 @@ export default class ViewPost extends React.Component {
         return textList[i];
     }
 
-    isComment(i) {
-        if (this.state.comments.length > i) {
-            return <p class="text-white"> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+    listComments = () => {
+        let backend_comment_list = this.commentList();
+        let comment_list = [];
+        for (let i = 0; i < backend_comment_list.length; i++) {
+            comment_list.push(                
+                <p class="text-white"> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+            )
         }
-        else {
-            return;
-        }
+
+        return comment_list;
     }
 
     render() {
@@ -237,15 +240,7 @@ export default class ViewPost extends React.Component {
                         <div class="row align-items-center">
                             <div class="col align-self-center">
                                 <p class="text-white fw-bold">Comment Section:</p>
-                                {this.isComment(0)}
-                                {this.isComment(1)}
-                                {this.isComment(2)}
-                                {this.isComment(3)}
-                                {this.isComment(4)}
-                                {this.isComment(5)}
-                                {this.isComment(6)}
-                                {this.isComment(7)}
-                                {this.isComment(8)}              
+                                {this.listComments()}              
                                 <div class="commentInput">
                                     <label for="text" class="visually-hidden">Leave a Comment</label>
                                     <textarea
