@@ -114,8 +114,15 @@ export default class ViewPost extends React.Component {
         let split = loc.split('/')
         loc = '/' + split[1] + '/comment/' + split[2];
         console.log(loc)
-        axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date})
-        window.location = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+            window.location = window.location.pathname;
+        } else {
+            console.log("not logged in");
+        }
+        //axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+        //window.location = window.location.pathname;
     }
 
     onLike(like) {
@@ -124,8 +131,15 @@ export default class ViewPost extends React.Component {
         let split = loc.split('/')
         loc = '/' + split[1] + '/like/' + split[2];
         console.log(loc)
-        axios.post("http://localhost:5000" + loc, {"name": this.state.user_username})
-        window.location = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+            window.location = window.location.pathname;
+        } else {
+            console.log("not logged in");
+        }
+        //axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+        //window.location = window.location.pathname;
     }
 
     commentList() {

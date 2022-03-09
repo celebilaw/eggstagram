@@ -89,8 +89,6 @@ export default class CreatePost extends React.Component {
             tag: dining_hall_tag,
             rating: this.state.rating,
             date: new Date(),
-            //date: this.state.text,
-            //likes: this.state.likes,
         }
 
         console.log(post);
