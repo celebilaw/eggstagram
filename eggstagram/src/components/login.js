@@ -13,6 +13,7 @@ export default class Login extends React.Component {
         this.state = {
             email: "",
             password: "",
+            success: ""
         }
 
         document.body.style.backgroundColor = "#8BB8E8";
@@ -39,16 +40,22 @@ export default class Login extends React.Component {
         }
 
         axios.post('http://localhost:5000/login', user)
-           .then(res => {
-               localStorage.setItem('jwt', res.data.token)
-               localStorage.setItem('username', res.data.username)
-               window.location = "/feed";
-           });
-        
-        this.setState({
-            email: "",
-            password: "",
-        });
+            .then(res => {
+                if (res.data.error === undefined) {
+                    this.setState({
+                        email: "",
+                        password: "",
+                        success: ""
+                    });
+                    localStorage.setItem('jwt', res.data.token)
+                    localStorage.setItem('username', res.data.username)
+                    window.location = "/feed";
+                } else {
+                    this.setState({
+                        success: res.data.error
+                    });
+                }
+            });
     }
 
     render() {
@@ -85,6 +92,9 @@ export default class Login extends React.Component {
                 </div>
                 <div class="mt-3">
                     <button type="submit" class="btn btn-lg loginButton btn-block">Login</button>
+                </div>
+                <div class="mt-3 error-color">
+                    {this.state.success}
                 </div>
             </form>
           </div>

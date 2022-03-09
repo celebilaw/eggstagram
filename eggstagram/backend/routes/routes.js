@@ -17,6 +17,20 @@ router.route('/users').get((req, res) => {
 // save new user to database
 router.route('/register').post((req, res) => {
   var {username, email, password} = req.body;
+  let validEmail = true;
+  let validUsername = true;
+  User.findOne({email:email})
+    .then((savedUser) => {
+      if (savedUser) {
+        validEmail = false
+      }
+    });
+  User.findOne({username:username})
+    .then((savedUser) => {
+      if (savedUser) {
+        validUsername = false
+      }
+    });
   bcrypt.hash(password,12)
     .then((hashedpw)=>{
       const newUser = new User({
@@ -26,7 +40,7 @@ router.route('/register').post((req, res) => {
       })
       newUser.save()
         .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(() => res.json({'usr': validUsername, 'eml': validEmail}));
     })
 });
 
@@ -36,14 +50,20 @@ router.route('/login').post((req, res) => {
   var {email, password} = req.body;
   User.findOne({email: email})
     .then((savedUser)=>{
-      bcrypt.compare(password,savedUser.password)
-        .then(match=>{
-          if (match) {
-            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '3600s' })
-            const username=savedUser.username
-            return res.json({'token':token,'username':username})
-          }
-        })
+      if (savedUser) {
+        bcrypt.compare(password,savedUser.password)
+          .then(match=>{
+            if (match) {
+              const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '3600s' })
+              const username=savedUser.username
+              return res.json({'token':token,'username':username})
+            } else {
+              return res.json({'error':'Invalid credentials!'})
+            }
+          })
+      } else {
+        return res.json({'error':'Invalid credentials!'})
+      }
     })
 });
 
