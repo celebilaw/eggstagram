@@ -91,7 +91,7 @@ export default class CreateAccount extends React.Component {
 
         console.log(user);
 
-        axios.post('http://localhost:5000/register', user)
+        axios.post('http://localhost:8080/register', user)
            .then(res => console.log(res.data));
         
         this.setState({

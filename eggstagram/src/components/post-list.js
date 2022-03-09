@@ -31,7 +31,7 @@ export default class PostsList extends React.Component {
 
     componentDidMount() {
         if (searchTag !== "") { //filters by tag
-            axios.get('http://localhost:5000/feed/'+searchTag)
+            axios.get('http://localhost:8080/feed/'+searchTag)
             .then(response => {
                 this.setState({posts: response.data})
             })
@@ -41,7 +41,7 @@ export default class PostsList extends React.Component {
             searchTag="";
         }
         else {
-            axios.get('http://localhost:5000/feed/')
+            axios.get('http://localhost:8080/feed/')
             .then(response => {
                 this.setState({posts: response.data})
             })
@@ -52,7 +52,7 @@ export default class PostsList extends React.Component {
     }
     //why would we delete a post? no entiendo
     deletePost(id) {
-        axios.delete('http:/http://localhost:5000/feed'+id)
+        axios.delete('http:/http://localhost:8080/feed'+id)
           .then(res => console.log(res.data));
         this.setState({
             posts: this.state.posts.filter(el => el._id !== id)
