@@ -16,9 +16,9 @@ const Post = props => (
         <td>{props.post.tag}</td>
         <td>{props.post.likes}</td>
         <td>{props.post.date.substring(0,10)}</td>
-        <td>
-            {<Link to={"/edit/"+props.post._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a>} {/*todo*/}
-        </td>
+        {/* <td>
+            {<Link to={"/edit/"+props.post._id}>edit</Link> | <a href="#" onClick={() => {props.deletePost(props.post._id)}}>delete</a>}
+        </td> */}
     </tr>
 )
 
@@ -86,19 +86,14 @@ export default class PostsList extends React.Component {
             case "de_neve":
             case "De_Neve":
                 return <p>De Neve</p>;
-                break;
             case "Bruin_Plate":
                 return <p>Bruin Plate</p>;
-                break;
             case "Bruin_Cafe":
                 return <p>Bruin Cafe</p>;
-                break;
             case "The_Study":
                 return <p>The Study at Hedrick</p>;
-                break;
             case "The_Drey":
                 return <p>The Drey</p>;
-                break;
             default:
                 return <p>{tagList[i]}</p>;
         }
@@ -107,7 +102,7 @@ export default class PostsList extends React.Component {
         let postList = this.postList();
         let imgList = [];
         postList.forEach(d => imgList.push(d.props.post.image));
-        if (imgList[i] == "none") {
+        if (imgList[i] === "none") {
             return "https://i.imgur.com/Wv0Vmys.jpg";
             //set equal to eggstagram logo and return
         }
@@ -149,7 +144,7 @@ export default class PostsList extends React.Component {
                 <div class="col-sm-6 col-md-6 col-lg-3">
                 <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(i)}>
                     <div class="card border-light bg-dark text-white card-size">
-                        <img src={this.getImage(i)} alt="food image" class="card-img-top card-img"/>
+                        <img src={this.getImage(i)} alt="food" class="card-img-top card-img"/>
                         <div class="card-body overflow-auto">
                             <h5 class="card-title card-text post-text header-text">{this.getTag(i)}</h5>
                             <p class="card-text post-text"> {this.getText(i)} </p>

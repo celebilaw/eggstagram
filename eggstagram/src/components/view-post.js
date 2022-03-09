@@ -5,16 +5,16 @@ import Rating from '@material-ui/lab/Rating';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-const Post = props => (
-    <tr>
-        <td>{props.post.username}</td>
-        <td>{props.post.text}</td>
-        <td>{props.post.image}</td>
-        <td>{props.post.rating}</td>
-        <td>{props.post.tag}</td>
-        <td>{props.post.date.substring(0,10)}</td>
-    </tr>
-)
+// const Post = props => (
+//     <tr>
+//         <td>{props.post.username}</td>
+//         <td>{props.post.text}</td>
+//         <td>{props.post.image}</td>
+//         <td>{props.post.rating}</td>
+//         <td>{props.post.tag}</td>
+//         <td>{props.post.date.substring(0,10)}</td>
+//     </tr>
+// )
 
 const Comment = props => (
     <tr>
@@ -79,19 +79,14 @@ export default class ViewPost extends React.Component {
         switch(this.state.tag) {
             case "De_Neve":
                 return <p>De Neve</p>;
-                break;
             case "Bruin_Plate":
                 return <p>Bruin Plate</p>;
-                break;
             case "Bruin_Cafe":
                 return <p>Bruin Cafe</p>;
-                break;
             case "The_Study":
                 return <p>The Study at Hedrick</p>;
-                break;
             case "The_Drey":
                 return <p>The Drey</p>;
-                break;
             default:
                 return <p>{this.state.tag}</p>;
         }
@@ -113,7 +108,7 @@ export default class ViewPost extends React.Component {
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
             console.log("commenting")
-            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date()}, {headers: {'authorization': myToken}})
             .catch(function (error){
                 if(error.response){
                     console.log(error.response.data);
@@ -136,7 +131,7 @@ export default class ViewPost extends React.Component {
     onLike(like) {
         like.preventDefault();
         for (let i = 0; i < this.state.likedBy.length; i++) {
-            if (this.state.user_username == this.state.likedBy[i]) {
+            if (this.state.user_username === this.state.likedBy[i]) {
                 console.log("Already liked post");
                 return;
             }
@@ -204,7 +199,7 @@ export default class ViewPost extends React.Component {
     }
 
     oneLike() {
-        if (this.state.likes == 1) {
+        if (this.state.likes === 1) {
             return "person";
         }
         else {
