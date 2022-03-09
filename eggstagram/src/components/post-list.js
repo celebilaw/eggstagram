@@ -151,7 +151,7 @@ export default class PostsList extends React.Component {
                     <div class="card border-light bg-dark text-white card-size">
                         <img src={this.getImage(i)} alt="food image" class="card-img-top card-img"/>
                         <div class="card-body overflow-auto">
-                            <h5 class="card-title card-text post-text">{this.getTag(i)}</h5>
+                            <h5 class="card-title card-text post-text header-text">{this.getTag(i)}</h5>
                             <p class="card-text post-text"> {this.getText(i)} </p>
                         </div>
                     </div>

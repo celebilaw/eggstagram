@@ -72,7 +72,7 @@ export default class ViewPost extends React.Component {
             return <img src={this.state.image} alt="food img" class="card-img-top card-img"/>;
         }
         else 
-            return;
+            return <img src="https://i.imgur.com/Wv0Vmys.jpg" alt="food img" class="card-img-top card-img"/>;
     }
 
     cuteTag() {

@@ -16,6 +16,10 @@
     color: white;
 }
 
+.header-text {
+    color: #8BB8E8;
+}
+
 .post-text:hover {
     color: #FFD100;
 }
