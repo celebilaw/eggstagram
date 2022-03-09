@@ -206,7 +206,7 @@ export default class ViewPost extends React.Component {
 
                 <section class="p-5 blueSection">
                     <div class="container">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col align-self-center">
                                 <p class="text-white fw-bold">Comment Section:</p>
                                 {this.isComment(0)}

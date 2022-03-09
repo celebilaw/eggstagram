@@ -4,6 +4,8 @@ import '../css/postlist.css';
 import axios from 'axios';
 import SearchBar from "./SearchBar";
 
+var searchTag="";
+
 const Post = props => (
     <tr>
         <td>{props.post.username}</td>
@@ -24,16 +26,29 @@ export default class PostsList extends React.Component {
         this.deletePost = this.deletePost.bind(this);
         this.state = {posts: []};
         document.body.style.backgroundColor = "#FFD100";
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/feed/')
-        .then(response => {
-            this.setState({posts: response.data})
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+        if (searchTag !== "") { //filters by tag
+            axios.get('http://localhost:5000/feed/'+searchTag)
+            .then(response => {
+                this.setState({posts: response.data})
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            searchTag="";
+        }
+        else {
+            axios.get('http://localhost:5000/feed/')
+            .then(response => {
+                this.setState({posts: response.data})
+            })
+            .catch((error) => {
+                console.log(error);
+            }) 
+        }
     }
     //why would we delete a post? no entiendo
     deletePost(id) {
@@ -90,15 +105,40 @@ export default class PostsList extends React.Component {
         return textList[i];
     }
 
+    onSubmit(submit) {
+        submit.preventDefault();
+        var search_tag = document.getElementById("search-tag");
+        var tag = search_tag.value
+        searchTag = tag;
+        this.componentDidMount();
+    }
+
     render() {
         return (
             <div class="container-fluid">
-                <SearchBar placeholder="Enter post description" data={this.state.posts}/>
                 <br />
-                <p>You are on the Feed Component!</p>
-                    <tbody>
-                        {console.log(this.getTag(1))}
-                    </tbody>
+                <p class="text-center">You are on the Feed Component!</p>
+                <SearchBar placeholder="Search for a post description" data={this.state.posts}/>
+                <br />
+                <form class="text-box" style={{ width: "250px", paddingLeft: "5px" }} onSubmit={this.onSubmit}>
+                    <h1 class="h3 mb-6 font-weight-normal text-white" style={{ fontSize: "20px" }}>Or filter by tag!</h1>
+                    <select id="search-tag" class="mb-4 form-select" aria-label="select-menu" required>
+                        <option value="" selected disabled>Choose a Dining Hall</option>
+                        <option value="Epicuria">Epicuria</option>
+                        <option value="De_Neve">De Neve</option>
+                        <option value="Feast">Feast</option>
+                        <option value="Bruin_Plate">Bruin Plate</option>
+                        <option value="Bruin_Cafe">Bruin Cafe</option>
+                        <option value="Rendezvous">Rendezvous</option>
+                        <option value="The_Study">The Study at Hedrick</option>
+                        <option value="The_Drey">The Drey</option>
+                    </select>
+                    <input type="submit" value="Submit" />
+                </form>
+                <br />
+                <tbody>
+                    {console.log(this.getTag(1))}
+                </tbody>
                 <div class="row g-4 mb-4">
                     <div class="col-sm-6 col-md-6 col-lg-3">
                     <Link class= "card card-text post-card text-white" to={"/posts/"+this.getId(0)}>
