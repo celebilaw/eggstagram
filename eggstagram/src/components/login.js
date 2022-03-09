@@ -41,6 +41,7 @@ export default class Login extends React.Component {
         axios.post('http://localhost:5000/login', user)
            .then(res => {
                localStorage.setItem('jwt', res.data.token)
+               localStorage.setItem('username', res.data.username)
                window.location = "/feed";
            });
         

@@ -37,7 +37,7 @@ export default class CreatePost extends React.Component {
             if (response.data.length > 0) {
                 this.setState({
                     users: response.data.map(user => user.username),
-                    username: response.data[0].username
+                    username: localStorage.getItem('username')
                 })
             }
         })
@@ -89,8 +89,6 @@ export default class CreatePost extends React.Component {
             tag: dining_hall_tag,
             rating: this.state.rating,
             date: new Date(),
-            //date: this.state.text,
-            //likes: this.state.likes,
         }
 
         console.log(post);

@@ -235,7 +235,7 @@ export default class MainComponents extends React.Component {
                             <div class="card bg-light">
                                 <div class="card-body text-center">
                                     <img 
-                                        src="https://i.kym-cdn.com/photos/images/newsfeed/001/701/596/9d5.jpg" 
+                                        src="https://i.kym-cdn.com/photos/images/newsfeed/001/701/632/e9f.jpg" 
                                         class="rounded-circle mb-3"
                                         alt="noah pic" height="160"
                                     />
@@ -244,7 +244,7 @@ export default class MainComponents extends React.Component {
                                     <a href="https://www.linkedin.com/in/noah-gardner-83a1aa1b9/" target="_blank" rel="noreferrer noopener"><i class="bi bi-linkedin text-dark mx-1"></i></a>
                                     <a href="https://github.com/NoahG303/" target="_blank" rel="noreferrer noopener"><i class="bi bi-github text-dark mx-1"></i></a>
                                     <a href="#"><i class="bi bi-twitter text-dark mx-1"></i></a>
-                                    <a href="#"><i class="bi bi-instagram text-dark mx-1"></i></a>
+                                    <a href="https://www.instagram.com/ngardner123/" target="_blank" rel="noreferrer noopener"><i class="bi bi-instagram text-dark mx-1"></i></a>
                                 </div>
                             </div>
                         </div>

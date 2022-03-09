@@ -39,16 +39,12 @@ router.route('/login').post((req, res) => {
       bcrypt.compare(password,savedUser.password)
         .then(match=>{
           if (match) {
-            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '30s' })
-            return res.json({'token':token})
+            const token=jwt.sign({_id:savedUser._id},process.env.JWT_SECRET, { expiresIn: '3600s' })
+            const username=savedUser.username
+            return res.json({'token':token,'username':username})
           }
         })
     })
-});
-
-// protected area
-router.get('/protected',login,(req,res)=>{
-  res.send("hello");
 });
 
 // return all posts found in the database, most recent first
@@ -89,7 +85,7 @@ router.route('/posts/:id').delete((req, res) => {
 
 // like post
 // problem: how do you get username of person liking post?
-router.route('/posts/like/:id').post((req,res) => {
+router.route('/posts/like/:id').post(login, (req,res) => {
   Post.findByIdAndUpdate(req.params.id, {$set: req.body})
 //     //do you need to restate everything or can you just update likes (checkout findByIdAndUpdate)
     .then(post => {
@@ -146,7 +142,7 @@ router.route('/feed/search/:key').get((req, res) => {
 }); 
 
 //add a comment
-router.route('/posts/comment/:id').post((req, res) => {
+router.route('/posts/comment/:id').post(login, (req, res) => {
   Post.findById(req.params.id)
     .then(post => {
       const username = req.body.username;

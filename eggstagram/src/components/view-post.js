@@ -32,6 +32,7 @@ export default class ViewPost extends React.Component {
                     rating: 0,
                     tag: "",
                     likes: 0,
+                    likedBy: [],
                     date: "",
                     comments: [], 
                     comment: "", 
@@ -43,15 +44,9 @@ export default class ViewPost extends React.Component {
         this.onChangeComment = this.onChangeComment.bind(this);
     }
     componentDidMount() {
-        let loc = window.location.pathname
-        console.log(loc)
-        axios.get('http://localhost:5000/users/')
-        .then(response => {
-            if (response.data.length > 0) {
-                this.setState({
-                    user_username: response.data[0].username
-                })
-            }
+        let loc = window.location.pathname;
+        this.setState({
+            user_username: localStorage.getItem('username')
         })
         axios.get('http://localhost:5000' + loc)
         .then(response => {
@@ -61,6 +56,7 @@ export default class ViewPost extends React.Component {
                             poster_username: response.data.username,
                             tag: response.data.tag,
                             likes: response.data.likes,
+                            likedBy: response.data.likedBy,
                             rating: response.data.rating,
                             date: response.data.date,
                             image: response.data.image})
@@ -73,7 +69,7 @@ export default class ViewPost extends React.Component {
     //height="500" width="500" class="img-fluid" alt=""
     isImage() {
         if (this.state.image !== "none") {
-            return <img src={this.state.post.image} alt="food img" class="card-img-top card-img"/>;
+            return <img src={this.state.image} alt="food img" class="card-img-top card-img"/>;
         }
         else 
             return;
@@ -114,18 +110,50 @@ export default class ViewPost extends React.Component {
         let split = loc.split('/')
         loc = '/' + split[1] + '/comment/' + split[2];
         console.log(loc)
-        axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date})
-        window.location = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            console.log("commenting")
+            axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+            .catch(function (error){
+                if(error.response){
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }else if(error.request){
+                    console.log(error.request)
+                }else{
+                    console.log("Error ", error.message)
+                }
+            });
+            window.location = window.location.pathname;
+        } else {
+            console.log("not logged in");
+        }
+        //axios.post("http://localhost:5000" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date}, {headers: {'authorization': myToken}})
+        //window.location = window.location.pathname;
     }
 
     onLike(like) {
         like.preventDefault();
+        for (let i = 0; i < this.state.likedBy.length; i++) {
+            if (this.state.user_username == this.state.likedBy[i]) {
+                console.log("Already liked post");
+                return;
+            }
+        } 
         let loc = window.location.pathname;
         let split = loc.split('/')
         loc = '/' + split[1] + '/like/' + split[2];
         console.log(loc)
-        axios.post("http://localhost:5000" + loc, {"name": this.state.user_username})
-        window.location = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+            window.location = window.location.pathname;
+        } else {
+            console.log("not logged in");
+        }
+        //axios.post("http://localhost:5000" + loc, {"name": this.state.user_username}, {headers: {'authorization': myToken}})
+        //window.location = window.location.pathname;
     }
 
     commentList() {
@@ -165,7 +193,7 @@ export default class ViewPost extends React.Component {
 
     isComment(i) {
         if (this.state.comments.length > i) {
-            return <p> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+            return <p class="text-white"> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
         }
         else {
             return;
