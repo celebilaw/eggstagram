@@ -196,7 +196,7 @@ export default class ViewPost extends React.Component {
         let comment_list = [];
         for (let i = 0; i < backend_comment_list.length; i++) {
             comment_list.push(                
-                <p class="text-white"> {this.getUser(i)} said: {this.getText(i)} on {(this.getDate(i)).substring(0,10)}</p>
+                <p class="text-white"> {this.getUser(i)} said: "{this.getText(i)}" on {(this.getDate(i)).substring(0,10)}</p>
             )
         }
 
