@@ -13,6 +13,7 @@ export default class Navbar extends React.Component {
 
     function logoutFunc() {
       localStorage.removeItem('jwt');
+      localStorage.removeItem('username');
       window.location.reload();
     }
 
