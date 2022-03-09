@@ -124,6 +124,7 @@ export default class PostsList extends React.Component {
                     <h1 class="h3 mb-6 font-weight-normal text-white" style={{ fontSize: "20px" }}>Or filter by tag!</h1>
                     <select id="search-tag" class="mb-4 form-select" aria-label="select-menu" required>
                         <option value="" selected disabled>Choose a Dining Hall</option>
+                        <option value="">Show All</option>
                         <option value="Epicuria">Epicuria</option>
                         <option value="De_Neve">De Neve</option>
                         <option value="Feast">Feast</option>
