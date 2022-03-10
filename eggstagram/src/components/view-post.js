@@ -74,7 +74,8 @@ export default class ViewPost extends React.Component {
 
     //height="500" width="500" class="img-fluid" alt=""
     isImage() {
-        if (this.state.image !== "none") {
+        if (this.state.image !== "none" && (this.state.image.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null)
+        ) {
             return <img src={this.state.image} alt="food img" class="card-img-top card-img"/>;
         }
         else 
@@ -112,7 +113,6 @@ export default class ViewPost extends React.Component {
         console.log(loc)
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
-            console.log("commenting")
             axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.comment, "date": new Date()}, {headers: {'authorization': myToken}})
             .catch(function (error){
                 if(error.response){
@@ -218,7 +218,7 @@ export default class ViewPost extends React.Component {
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
             //should i add authentication? it only shows up if the username is correct anyway
-            axios.delete("http://localhost:8080" + loc)
+            axios.delete("http://localhost:8080" + loc, {headers: {'authorization': myToken}})
             window.location = "http://localhost:3000/feed";
         } else {
             console.log("not logged in");
@@ -232,7 +232,8 @@ export default class ViewPost extends React.Component {
         let myToken = localStorage.getItem("jwt")
         if(myToken != null){
             //should i add authentication? it only shows up if the username is correct anyway
-            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.edit, "date": new Date()})
+            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.edit, "date": new Date()}, 
+                                                        {headers: {'authorization': myToken}})
             window.location = window.location.pathname;
         } else {
             console.log("not logged in");

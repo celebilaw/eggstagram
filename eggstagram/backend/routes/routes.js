@@ -97,7 +97,7 @@ router.route('/posts/:id').get((req, res) => {
 });
   
 // delete specific post
-router.route('/posts/:id').delete((req, res) => {
+router.route('/posts/:id').delete(login, (req, res) => {
   Post.findByIdAndDelete(req.params.id)
     .then(() => res.json('Post deleted.'))
     .catch(err => res.status(400).json('Error: ' + err));
@@ -119,7 +119,7 @@ router.route('/posts/like/:id').post(login, (req,res) => {
 });
 
 // update specific post - currently just for text edits
-router.route('/posts/:id').post((req, res) => {
+router.route('/posts/:id').post(login, (req, res) => {
   Post.findById(req.params.id)
     .then(post => {
       post.username = req.body.username;

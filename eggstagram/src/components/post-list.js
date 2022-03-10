@@ -102,7 +102,8 @@ export default class PostsList extends React.Component {
         let postList = this.postList();
         let imgList = [];
         postList.forEach(d => imgList.push(d.props.post.image));
-        if (imgList[i] === "none") {
+        if (imgList[i] === "none" || (imgList[i].match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) === null)
+        ) {
             return "https://i.imgur.com/Wv0Vmys.jpg";
             //set equal to eggstagram logo and return
         }
