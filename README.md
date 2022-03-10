@@ -18,15 +18,47 @@
 5. Run `npm install`
 ### Starting Backend
 6. Navigate into the folder `eggstagram/eggstagram/backend` via the following command
-- `cd backend`
+* `cd backend`
 7. Run `npm install`
 8. Run `nodemon server`
 ### Starting Frontend
 9. Create a new terminal window
 10. Navigate into the folder `eggstagram/eggstagram`
-- Navigate to the folder where the repository was cloned
-- `cd eggstagram/eggstagram`
+* Navigate to the folder where the repository was cloned
+* `cd eggstagram/eggstagram`
 11. Run `npm start`
 ### Using the Website
 12. Eggstagram will open in a new browser at http://localhost:3000
 13. Start interacting with our website! (explain)
+-----
+#### Users must be logged in to:
+* Post
+* Like
+* Comment
+*Your login will time out in 1 hour*
+-----
+#### Navigation and Feed
+##### General Navigation
+* Click "Eggstagram" (or the logo) in the top left of the website to return to the Home Page
+* Click "Posts" in the top right to see the Post Feed
+* Click "Make a Post!" in the top right to make your own post
+* Click "Create an Account" in the top right to make your own account
+* Click "Login" in the top right to sign in to your account
+* Click "Logout" in the top right to sign out of your account  
+##### Feed Navigation
+* Clicking on a post in the feed will allow you to view the post itself (likes & comments)
+  * From here, if logged in, you can submit your own comments and like a post
+* Click "Posts" (in the top right) to return to the feed
+##### Feed Filtering
+* Posts can be filtered by description, dining hall, or rating
+* Typing in a description will open a dropdown of individual posts for you to select and consequently view
+* Clicking the "X" in the search bar for descriptions will remove what you have typed if you decide to not search for a post
+* Selecting a Dining Hall from the dropdown will change the feed to only show reviews pertaining to that Dining Hall
+* Selecting "Show All" in the dropdown will remove the Dining Hall Filter you previously selected
+* Selecting a Star Rating will change the feed to only show reviews of that Star Rating
+* Selecting the same Star Rating you previously selected will undo the Star Rating Filter (ex: clicking the 4th star after filtering to 4 Star Ratings)
+-----
+
+### Closing the Website
+14. In the `nodemon server` terminal window, input the command `Ctrl - C` to shut down the backend 
+15. In the `npm start` terminal window, input the command `Ctrl - C` and `Y` to shut down the frontend
