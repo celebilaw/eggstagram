@@ -34,8 +34,10 @@
 #### Users must be logged in to:
 * Post
 * Like
-* Comment
+* Comment 
+
 *Your login will time out in 1 hour*
+
 -----
 #### Navigation and Feed
 ##### General Navigation
