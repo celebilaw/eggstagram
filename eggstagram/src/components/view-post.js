@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../css/postlist.css';
 import Rating from '@material-ui/lab/Rating';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLinkClickHandler } from "react-router-dom";
 
 
 // const Post = props => (
@@ -38,11 +39,14 @@ export default class ViewPost extends React.Component {
                     comment: "", 
                     user_username: "",
                     poster_username: "",
-                    image: ""};
+                    image: "",
+                    edit: ""};
         this.onLike = this.onLike.bind(this);
         this.onComment = this.onComment.bind(this);
         this.onChangeComment = this.onChangeComment.bind(this);
         this.onDelete = this.onDelete.bind(this);
+        this.onEdit = this.onEdit.bind(this);
+        this.onChangeEdit = this.onChangeEdit.bind(this);
     }
     componentDidMount() {
         let loc = window.location.pathname;
@@ -60,7 +64,8 @@ export default class ViewPost extends React.Component {
                             likedBy: response.data.likedBy,
                             rating: response.data.rating,
                             date: response.data.date,
-                            image: response.data.image})
+                            image: response.data.image,
+                            edit: response.data.text})
         })
         .catch((error) => {
             console.log(error);
@@ -97,7 +102,6 @@ export default class ViewPost extends React.Component {
         this.setState({
             comment: desc.target.value
         });
-
     }
 
     onComment(comment) {
@@ -222,10 +226,61 @@ export default class ViewPost extends React.Component {
         return;
     }
 
+    onEdit(edit) {
+        edit.preventDefault();
+        let loc = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            //should i add authentication? it only shows up if the username is correct anyway
+            axios.post("http://localhost:8080" + loc, {"username": this.state.user_username, "text": this.state.edit, "date": new Date()})
+            window.location = window.location.pathname;
+        } else {
+            console.log("not logged in");
+        }
+        return;
+    }
+
+    onChangeEdit(desc) {
+        this.setState({
+            edit: desc.target.value
+        });
+    }
+
     isPoster() {
         if (this.state.user_username == this.state.poster_username) {
             return <button class="btn btn-primary fw-bold" type="submit" onClick={this.onDelete}> <i class="bi"></i>  Delete Post </button>
+        }
+        else return;
+    }
 
+    isPoster2() {
+        if (this.state.user_username == this.state.poster_username) {
+            let return_val = [];
+            return_val.push(
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col align-self-center">
+                        <p class="text-blue fw-bold">Edit Your Post</p>
+                        <div class="commentInput">
+                            <label for="text" class="visually-hidden">Edit</label>
+                            <textarea
+                                    type="text"
+                                    id="description"
+                                    class="form-control"
+                                    placeholder="Enter New Post Text Here"
+                                    required
+                                    value={this.state.edit}
+                                    onChange={this.onChangeEdit}
+                                    rows="2"
+                            >
+                            </textarea>
+                        </div>
+                        <button class="btn btn-dark fw-bold" type="submit" onClick={this.onEdit}> <i class="bi bi-chevron-right"></i> Submit Edit</button>
+                    </div>
+                </div>
+            </div>
+            )
+            return return_val;
         }
         else return;
     }
@@ -258,6 +313,7 @@ export default class ViewPost extends React.Component {
                                     <button class="btn btn-primary fw-bold" type="submit" onClick={this.onLike}> <i class="bi bi-hand-thumbs-up"></i>  Like Post </button>
                                 </p>
                                 {this.isPoster()}
+                                &nbsp;&nbsp;
                             </div>
                         </div>
                     </div>
@@ -287,6 +343,9 @@ export default class ViewPost extends React.Component {
                             </div>
                         </div>
                     </div>
+                </section>
+                <section class="p-5 yellowSection">
+                    {this.isPoster2()}
                 </section>
             </div>
         )
