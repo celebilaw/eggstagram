@@ -11,9 +11,8 @@
 ## Run Eggstagram!
 ### Initial Set Up
 1. Run `git clone https://github.com/celebilaw/eggstagram.git` in the desired folder
-2. Navigate into the folder `eggstagram/eggstagram` via the following commands
-- `cd eggstagram`
-- `cd eggstagram`
+2. Navigate into the folder `eggstagram/eggstagram` via the following command
+- `cd eggstagram/eggstagram`
 3. Run `npm install cors express mongoose dotenv bcryptjs jsonwebtoken`
 4. Run `npm install -g nodemon`
 5. Run `npm install`
@@ -26,8 +25,7 @@
 9. Create a new terminal window
 10. Navigate into the folder `eggstagram/eggstagram`
 - Navigate to the folder where the repository was cloned
-- `cd eggstagram`
-- `cd eggstagram`
+- `cd eggstagram/eggstagram`
 11. Run `npm start`
 ### Using the Website
 12. Eggstagram will open in a new browser at http://localhost:3000
