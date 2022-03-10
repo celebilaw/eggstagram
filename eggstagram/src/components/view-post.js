@@ -47,6 +47,8 @@ export default class ViewPost extends React.Component {
         this.onDelete = this.onDelete.bind(this);
         this.onEdit = this.onEdit.bind(this);
         this.onChangeEdit = this.onChangeEdit.bind(this);
+        document.body.style.backgroundImage = "none";
+        document.body.style.backgroundColor = "#FFD100";
     }
     componentDidMount() {
         let loc = window.location.pathname;

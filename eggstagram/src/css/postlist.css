@@ -62,3 +62,17 @@
     max-height: 400px;
     object-fit: cover;
 }
+
+.postList-text {
+    color: white;
+    font-size: 40px;
+    text-shadow:
+        0.05em 0 #8BB8E8,
+        0 0.05em #8BB8E8,
+        -0.05em 0 #8BB8E8,
+        0 -0.05em #8BB8E8,
+        -0.05em -0.05em #8BB8E8,
+        -0.05em 0.05em #8BB8E8,
+        0.05em -0.05em #8BB8E8,
+        0.05em 0.05em #8BB8E8;
+}

@@ -17,6 +17,8 @@ export default class Login extends React.Component {
         }
 
         document.body.style.backgroundColor = "#8BB8E8";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundImage = "url('https://www.hotelpalomar-beverlyhills.com/images/1700-960/aerial-view-of-ucla-0886e91c.jpg')";
     }
 
     onChangeEmail(emal) {
@@ -60,12 +62,12 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <div class="text-center">
+        <div class="text-center">
             <form className="login" onSubmit={this.onSubmit}>
                 <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
                     alt="eggstagram logo" height="100"
                 />
-                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                <h1 class="h3 mb-3 font-weight-bold login-text shadow-lg">Login</h1>
                 <div class="mb-3"> 
                     <label for="emailAddress" class="visually-hidden">Email Address:</label>
                     <input  
@@ -97,7 +99,7 @@ export default class Login extends React.Component {
                     {this.state.success}
                 </div>
             </form>
-          </div>
+        </div>
         )
     }
 }

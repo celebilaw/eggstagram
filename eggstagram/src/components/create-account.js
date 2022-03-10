@@ -22,6 +22,9 @@ export default class CreateAccount extends React.Component {
         }
 
         document.body.style.backgroundColor = "#FFD100";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center top";
+        document.body.style.backgroundImage = "url('https://www.chr.ucla.edu/sites/g/files/yaccgq1431/files/styles/sf_hero_banner/public/media/images/royce-1.jpeg?h=d1cb525d&itok=QPsIT2zs')";
     }
 
     onChangeUsername(user) {
@@ -134,7 +137,7 @@ export default class CreateAccount extends React.Component {
                     <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
                         alt="eggstagram logo" height="100"
                     />
-                    <h1 class="h3 mb-3 font-weight-normal">Create an Account</h1>
+                    <h1 class="h3 mb-3 font-weight-normal account-text">Create an Account</h1>
                     <div class="mb-1"> 
                         <label for="emailAddress" class="visually-hidden">Email Address:</label>
                         <input  

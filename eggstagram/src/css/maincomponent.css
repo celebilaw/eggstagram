@@ -70,3 +70,17 @@ body::before {
 .title-text {
     color: #2774AE;
 }
+
+.eggstagram-text {
+    color: white;
+    font-size: 40px;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
+}

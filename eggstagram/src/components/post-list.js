@@ -27,7 +27,8 @@ export default class PostsList extends React.Component {
         super(props);
         this.deletePost = this.deletePost.bind(this);
         this.state = {posts: []};
-        document.body.style.backgroundColor = "#FFD100";
+        document.body.style.backgroundColor = "#8BB8E8";
+        document.body.style.backgroundImage = "none";
         this.onSubmit = this.onSubmit.bind(this);
         this.onChangeRating = this.onChangeRating.bind(this);
     }
@@ -186,7 +187,7 @@ export default class PostsList extends React.Component {
         return (
             <div class="container-fluid">
                 <br />
-                <h1 class="mt-3 text-center text-primary ">Review Feed</h1>
+                <h1 class="mt-3 text-center postList-text">Review Feed</h1>
                 <SearchBar placeholder="Search for a post description" data={this.state.posts}/>
                 <br />
 

@@ -28,6 +28,9 @@ export default class CreatePost extends React.Component {
         }
 
         document.body.style.backgroundColor = "#8BB8E8";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center 15%";
+        document.body.style.backgroundImage = "url('https://s3.amazonaws.com/cms.ipressroom.com/173/files/20203/5e99ec062cfac21b62081f02_200416_ulca_MGL6265/200416_ulca_MGL6265_hero.jpg')";
     }
 
     // called right before anything is rendered on the webpage
@@ -112,7 +115,7 @@ export default class CreatePost extends React.Component {
         return (
             <div class="container-fluid p-2 text-center">
                 <form class="text-box post-list mt-3" onSubmit={this.onSubmit}>
-                    <h1 class="h3 mb-4 font-weight-normal text-white">Create a Review Post!</h1>
+                    <h1 class="h3 mb-4 font-weight-normal text-white posting-text">Create a Review Post!</h1>
                     <select id="dining-hall-tag" class="mb-4 form-select" aria-label="select-menu" required>
                         <option value="" selected disabled>Choose a Dining Hall</option>
                         {/* value is sent to server */}
@@ -151,7 +154,7 @@ export default class CreatePost extends React.Component {
                         />
                     </div>
                     <div className="mb-4">
-                        <label for="rating" class="form-label rating-font text-white">Rate the food!</label>
+                        <label for="rating" class="form-label rating-font text-white posting-text">Rate the food!</label>
                         <br/>
                         <Rating
                             name="Rating Label"

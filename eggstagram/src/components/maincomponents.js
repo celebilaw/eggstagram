@@ -16,6 +16,7 @@ export default class MainComponents extends React.Component {
         }
 
         document.body.style.backgroundColor = "#FFD100";
+        document.body.style.backgroundImage = "none";
     }
 
     onSubmit(submit) {
@@ -106,7 +107,7 @@ export default class MainComponents extends React.Component {
             </div>
 
             <section class="p-2 text-white text-center" >
-                <h1 style={{fontWeight: "bold"}}>Welcome to Eggstagram!</h1>
+                <h1 style={{fontWeight: "bold"}} class="eggstagram-text">Welcome to Eggstagram!</h1>
                 <p class="title-text" style={{fontWeight: "bold"}}>A project inspired by Eggs, Instagram, and EGGERT</p>
             </section>
             

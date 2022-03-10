@@ -4,7 +4,7 @@
 }
 
 .signUpButton {
-    background-color: #8BB8E8;
+    background-color: lightblue;
 }
 
 .error-color {
@@ -16,4 +16,18 @@
     color: mediumseagreen;
     font-weight: bold;
     font-size: 20px;
+}
+
+.account-text {
+    color: white;
+    font-size: 30px;
+    text-shadow:
+        0.05em 0 lightblue,
+        0 0.05em lightblue,
+        -0.05em 0 lightblue,
+        0 -0.05em lightblue,
+        -0.05em -0.05em lightblue,
+        -0.05em 0.05em lightblue,
+        0.05em -0.05em lightblue,
+        0.05em 0.05em lightblue;
 }
