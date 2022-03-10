@@ -140,7 +140,7 @@ router.route('/feed/:tag').get((req, res) => {
 }); 
 
 router.route('/feed/stars/:rating').get((req, res) => {
-  Post.find( {rating: req.params.rating} ).sort( {rating: "desc"})
+  Post.find( {rating: req.params.rating} ).sort( {createdAt: "desc", rating: "desc"})
     .then(posts => res.json(posts))
     .catch(err => res.status(400).json('Error: ' + err));
 });

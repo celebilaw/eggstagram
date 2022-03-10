@@ -123,6 +123,13 @@ export default class PostsList extends React.Component {
         return textList[i] ;
     }
 
+    getRating(i) {
+        let postList = this.postList();
+        let ratingList = [];
+        postList.forEach(d => ratingList.push(d.props.post.rating));
+        return ratingList[i] ;
+    }
+
     onSubmit(submit) {
         submit.preventDefault();
         var search_tag = document.getElementById("search-tag");
@@ -146,7 +153,21 @@ export default class PostsList extends React.Component {
                     <div class="card border-light bg-dark text-white card-size">
                         <img src={this.getImage(i)} alt="food" class="card-img-top card-img"/>
                         <div class="card-body overflow-auto">
-                            <h5 class="card-title card-text post-text header-text">{this.getTag(i)}</h5>
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title card-text post-text header-text">{this.getTag(i)}</h5>
+                                </div>
+                                <div class="col">
+                                    <Rating
+                                        name="Rating Label"
+                                        value={this.getRating(i)}
+                                        size="large"
+                                        sx={{
+                                            color: "rating-color"
+                                        }}
+                                    />
+                                </div>
+                            </div>
                             <p class="card-text post-text"> {this.getText(i)} </p>
                         </div>
                     </div>
