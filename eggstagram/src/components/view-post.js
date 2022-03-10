@@ -42,6 +42,7 @@ export default class ViewPost extends React.Component {
         this.onLike = this.onLike.bind(this);
         this.onComment = this.onComment.bind(this);
         this.onChangeComment = this.onChangeComment.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
     componentDidMount() {
         let loc = window.location.pathname;
@@ -207,6 +208,28 @@ export default class ViewPost extends React.Component {
         }
     }
 
+    onDelete(del) {
+        del.preventDefault();
+        let loc = window.location.pathname;
+        let myToken = localStorage.getItem("jwt")
+        if(myToken != null){
+            //should i add authentication? it only shows up if the username is correct anyway
+            axios.delete("http://localhost:8080" + loc)
+            window.location = "http://localhost:3000/feed";
+        } else {
+            console.log("not logged in");
+        }
+        return;
+    }
+
+    isPoster() {
+        if (this.state.user_username == this.state.poster_username) {
+            return <button class="btn btn-primary fw-bold" type="submit" onClick={this.onDelete}> <i class="bi"></i>  Delete Post </button>
+
+        }
+        else return;
+    }
+
     render() {
         return (
             <div>
@@ -217,7 +240,7 @@ export default class ViewPost extends React.Component {
                                 {this.isImage()}
                             </div>
                             <div class="col-md p-4 bg-light">
-                                <h5 class="fw-bold"> {this.cuteTag()}                 
+                                <h5 class="fw-bold"> {this.cuteTag()}
                                     <div>    
                                         <Rating
                                             name="Rating Label"
@@ -234,6 +257,7 @@ export default class ViewPost extends React.Component {
                                 <p class="fw-bold">Liked by {this.state.likes} {this.oneLike()} &nbsp;&nbsp;
                                     <button class="btn btn-primary fw-bold" type="submit" onClick={this.onLike}> <i class="bi bi-hand-thumbs-up"></i>  Like Post </button>
                                 </p>
+                                {this.isPoster()}
                             </div>
                         </div>
                     </div>
