@@ -10,7 +10,7 @@
 
 ## Run Eggstagram!
 ### Initial Set Up
-1. Run `git clone (github link)` in the desired folder
+1. Run `git clone https://github.com/celebilaw/eggstagram.git` in the desired folder
 2. Navigate into the folder `eggstagram/eggstagram` via the following commands
 - `cd eggstagram`
 - `cd eggstagram`
