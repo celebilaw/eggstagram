@@ -107,7 +107,7 @@ export default class MainComponents extends React.Component {
 
             <section class="p-2 text-white text-center" >
                 <h1 style={{fontWeight: "bold"}}>Welcome to Eggstagram!</h1>
-                <p style={{fontWeight: "bold"}}>A project inspired by Eggs, Instagram, and EGGERT</p>
+                <p class="title-text" style={{fontWeight: "bold"}}>A project inspired by Eggs, Instagram, and EGGERT</p>
             </section>
             
             <section id="faq" class="p-4 whiteSection">

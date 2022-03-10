@@ -1,7 +1,6 @@
 .card-img {
-    height: 250px;
-    max-width: 600px;
-    object-fit: cover;
+    max-height: 250px;
+    object-fit: fill;
 }
 .card-heart{
     height: 25px;
@@ -45,4 +44,21 @@
     overflow-y: auto;
     padding-bottom: 10px;
     outline: black;
+}
+
+.desc-wrap {
+    word-wrap: break-word;
+    max-width: 700px;
+}
+
+.comment-wrap {
+    word-wrap: break-word;
+    max-width: auto;
+}
+
+.view-image {
+    max-width: 600px;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
 }

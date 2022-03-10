@@ -76,10 +76,10 @@ export default class ViewPost extends React.Component {
     isImage() {
         if (this.state.image !== "none" && (this.state.image.match(/^http[^\?]*.(jpg|jpeg|gif|png|tiff|bmp)(\?(.*))?$/gmi) !== null)
         ) {
-            return <img src={this.state.image} alt="food img" class="card-img-top card-img"/>;
+            return <img src={this.state.image} alt="food img" class="card-img-top view-image"/>;
         }
         else 
-            return <img src="https://i.imgur.com/Wv0Vmys.jpg" alt="food img" class="card-img-top card-img"/>;
+            return <img src="https://i.imgur.com/Wv0Vmys.jpg" alt="food img" class="card-img-top card-img view-image"/>;
     }
 
     cuteTag() {
@@ -196,7 +196,7 @@ export default class ViewPost extends React.Component {
         let comment_list = [];
         for (let i = 0; i < backend_comment_list.length; i++) {
             comment_list.push(                
-                <p class="text-white"> {this.getUser(i)} said: "{this.getText(i)}" on {(this.getDate(i)).substring(0,10)}</p>
+                <p class="text-white comment-wrap"> {this.getUser(i)} said: "{this.getText(i)}" on {(this.getDate(i)).substring(0,10)}</p>
             )
         }
 
@@ -295,7 +295,7 @@ export default class ViewPost extends React.Component {
                             <div class="col-md">
                                 {this.isImage()}
                             </div>
-                            <div class="col-md p-4 bg-light">
+                            <div class="col-md p-4 bg-light desc-wrap">
                                 <h5 class="fw-bold"> {this.cuteTag()}
                                     <div>    
                                         <Rating
@@ -305,6 +305,8 @@ export default class ViewPost extends React.Component {
                                             sx={{
                                                 color: "rating-color"
                                             }}
+                                            style={{opacity: 1}}
+                                            disabled
                                         />
                                     </div>
                                 </h5>

@@ -164,8 +164,10 @@ export default class PostsList extends React.Component {
                                         value={this.getRating(i)}
                                         size="large"
                                         sx={{
-                                            color: "rating-color"
+                                            color: "rating-color",
                                         }}
+                                        style={{opacity: 1}}
+                                        disabled
                                     />
                                 </div>
                             </div>
