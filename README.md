@@ -34,7 +34,9 @@
 #### Users must be logged in to:
 * Post
 * Like
-* Comment 
+* Comment
+* Edit Your Posts
+* Delete Your Posts 
 
 *Your login will time out in 1 hour*
 
@@ -48,8 +50,9 @@
 * Click "Login" in the top right to sign in to your account
 * Click "Logout" in the top right to sign out of your account  
 ##### Feed Navigation
-* Clicking on a post in the feed will allow you to view the post itself (likes & comments)
+* Clicking on a post in the feed will allow you to view the post itself (likes and comments)
   * From here, if logged in, you can submit your own comments and like a post
+  * If you made the post, you can edit the description or delete it (you may have to scroll down to see the area to Edit)
 * Click "Posts" (in the top right) to return to the feed
 ##### Feed Filtering
 * Posts can be filtered by description, dining hall, or rating
