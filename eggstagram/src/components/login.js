@@ -36,6 +36,12 @@ export default class Login extends React.Component {
     onSubmit(submit) {
         submit.preventDefault();
 
+        if (!this.state.email.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+            this.setState({
+                success: "Invalid credentials!"
+            });
+        }
+
         const user = {
             email: this.state.email,
             password: this.state.password,
@@ -63,7 +69,7 @@ export default class Login extends React.Component {
     render() {
         return (
         <div class="text-center">
-            <form className="login" onSubmit={this.onSubmit}>
+            <form className="login" noValidate onSubmit={this.onSubmit}>
                 <img class="mt-4 mb-4" src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/eggstagram-colin-judge.jpg" 
                     alt="eggstagram logo" height="100"
                 />

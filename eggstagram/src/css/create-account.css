@@ -10,12 +10,30 @@
 .error-color {
     color: red;
     font-weight: bold;
+    text-shadow:
+        0.05em 0 yellow,
+        0 0.05em yellow,
+        -0.05em 0 yellow,
+        0 -0.05em yellow,
+        -0.05em -0.05em yellow,
+        -0.05em 0.05em yellow,
+        0.05em -0.05em yellow,
+        0.05em 0.05em yellow;
 }
 
 .success-color {
     color: mediumseagreen;
     font-weight: bold;
     font-size: 20px;
+    text-shadow:
+        0.05em 0 black,
+        0 0.05em black,
+        -0.05em 0 black,
+        0 -0.05em black,
+        -0.05em -0.05em black,
+        -0.05em 0.05em black,
+        0.05em -0.05em black,
+        0.05em 0.05em black;
 }
 
 .account-text {
