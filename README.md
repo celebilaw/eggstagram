@@ -22,12 +22,11 @@
 ### Starting Frontend
 7. Create a new terminal window
 8. Navigate into the folder `eggstagram/eggstagram`
-* Navigate to the folder where the repository was cloned
 * `cd eggstagram/eggstagram`
 9. Run `npm start`
 ### Using the Website
 10. Eggstagram will open in a new browser at http://localhost:3000
-11. Start interacting with our website! (explain)
+11. Start interacting with our website!
 -----
 #### Users must be logged in to:
 * Post
